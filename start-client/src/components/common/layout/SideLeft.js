@@ -162,7 +162,7 @@ function SideLeft() {
                         rel='noopener noreferrer'
                         href='https://github.com/spring-io/initializr/'
                       >
-                        Spring Initializr
+                        TaoTao Cloud Initializr
                       </a>
                     </span>{' '}
                     <span>and</span>{' '}

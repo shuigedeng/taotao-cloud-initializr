@@ -85,7 +85,7 @@ const config = {
             minifyCSS: true,
           },
       template: './static/index.html',
-      title: 'Spring Initializr',
+      title: 'TaoTao Cloud Initializr',
       description: `Initializr generates spring boot project with just what you need to start quickly!`,
       url: 'https://start.spring.io',
       twitter: '@springboot',

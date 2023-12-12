@@ -36,8 +36,27 @@ spring:
         use-last-modified: false
 
 initializr:
+  group-id:
+    value: com.taotao.cloud
+  artifact-id:
+    value: taotao-cloud-demo
+  name:
+    value: taotao-cloud-demo
+  description:
+    value: demo project for taotao cloud
+  version:
+    value: 0.0.1-SNAPSHOT
+  package-name:
+    value: com.taotao.cloud.demo
   env:
     boms:
+      taotao-cloud:
+        groupId: io.github.shuigedeng
+        artifactId: taotao-cloud-dependencies
+        versionProperty: taotao-cloud.version
+        mappings:
+          - compatibilityRange: "[3.2.0,3.2.1]"
+            version: 2024.01
       codecentric-spring-boot-admin:
         groupId: de.codecentric
         artifactId: spring-boot-admin-dependencies
@@ -147,10 +166,1071 @@ initializr:
           - compatibilityRange: "[3.0.0,3.2.0-M1)"
             version: 24.2.5
     gradle:
-      dependency-management-plugin-version: 1.0.14.RELEASE
+      dependency-management-plugin-version: 1.1.4
     platform:
-      compatibility-range: "3.1.0"
+      compatibility-range: "3.2.0"
   dependencies:
+    - name: TaoTaoCloud Facility Starter
+      content:
+        - name: TaoTaoCloud Facility Alibaba
+          id: taotao-cloud-starter-facility-alibaba
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-facility-alibaba
+          description: taotao cloud starter facility-alibaba
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Facility Huawei
+          id: taotao-cloud-starter-facility-huawei
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-facility-huawei
+          description: taotao cloud starter facility-huawei
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Facility Tencent
+          id: taotao-cloud-starter-facility-tencent
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-facility-tencent
+          description: taotao cloud starter facility-tencent
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Facility Zookeeper
+          id: taotao-cloud-starter-facility-zookeeper
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-facility-zookeeper
+          description: taotao cloud starter facility-zookeeper
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+    - name: TaoTaoCloud Alibaba Starter
+      content:
+        - name: TaoTaoCloud Starter Alibaba Seata
+          id: taotao-cloud-starter-alibaba-seata
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-alibaba-seata
+          description: taotao cloud starter alibaba seata
+          starter: true
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Alibaba Sentinel
+          id: taotao-cloud-starter-alibaba-sentinel
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-alibaba-sentinel
+          description: taotao cloud starter alibaba sentinel
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+    - name: TaoTaoCloud Data Starter
+      content:
+        - name: TaoTaoCloud Starter Data Elasticsearch
+          id: taotao-cloud-starter-data-elasticsearch
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-data-elasticsearch
+          description: taotao cloud starter data-elasticsearch
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Data Jpa
+          id: taotao-cloud-starter-data-jpa
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-data-jpa
+          description: taotao cloud starter data-jpa
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Data Mongodb
+          id: taotao-cloud-starter-data-mongodb
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-data-mongodb
+          description: taotao cloud starter data-mongodb
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Data Mybatis Plus
+          id: taotao-cloud-starter-data-mybatis-plus
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-data-mybatis-plus
+          description: taotao cloud starter data-mybatis-plus
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Data P6spy
+          id: taotao-cloud-starter-data-p6spy
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-data-p6spy
+          description: taotao cloud starter data-p6spy
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Data Shardingsphere
+          id: taotao-cloud-starter-data-shardingsphere
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-data-shardingsphere
+          description: taotao cloud starter data-shardingsphere
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+    - name: TaoTaoCloud Cache Starter
+      content:
+        - name: TaoTaoCloud Starter Cache Hazelcast
+          id: taotao-cloud-starter-cache-hazelcast
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-cache-hazelcast
+          description: taotao cloud starter cache hazelcast
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Cache Caffeine
+          id: taotao-cloud-starter-cache-caffeine
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-cache-caffeine
+          description: taotao cloud starter cache caffeine
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Cache Jetcache
+          id: taotao-cloud-starter-cache-jetcache
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-cache-jetcache
+          description: taotao cloud starter cache jetcache
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Cache Redis
+          id: taotao-cloud-starter-cache-redis
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-cache-redis
+          description: taotao cloud starter cache redis
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+    - name: TaoTaoCloud Job Starter
+      content:
+        - name: TaoTaoCloud Starter Job Elastic
+          id: taotao-cloud-starter-job-elastic
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-job-elastic
+          description: taotao cloud starter job elastic
+          starter: true
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Job Quartz
+          id: taotao-cloud-starter-job-quartz
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-job-quartz
+          description: taotao cloud starter job quartz
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Job Schedule
+          id: taotao-cloud-starter-job-schedule
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-job-schedule
+          description: taotao cloud starter job schedule
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Job Powerjob
+          id: taotao-cloud-starter-job-powerjob
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-job-powerjob
+          description: taotao cloud starter job powerjob
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Job Xxl
+          id: taotao-cloud-starter-job-xxl
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-job-xxl
+          description: taotao cloud starter job xxl
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+    - name: TaoTaoCloud Mq Starter
+      content:
+        - name: TaoTaoCloud Starter Mq Kafka
+          id: taotao-cloud-starter-mq-kafka
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-mq-kafka
+          description: taotao cloud starter mq kafka
+          starter: true
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Mq Pulsar
+          id: taotao-cloud-starter-mq-pulsar
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-mq-pulsar
+          description: taotao cloud starter mq-pulsar
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Mq Rabbitmq
+          id: taotao-cloud-starter-mq-rabbitmq
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-mq-rabbitmq
+          description: taotao cloud starter mq rabbitmq
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Mq Rocketmq
+          id: taotao-cloud-starter-mq-rocketmq
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-mq-rocketmq
+          description: taotao cloud starter mq rocketmq
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Mq Stream
+          id: taotao-cloud-starter-mq-stream
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-mq-stream
+          description: taotao cloud starter mq stream
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Mq Mqtt
+          id: taotao-cloud-starter-mq-mqtt
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-mq-mqtt
+          description: taotao cloud starter mq mqtt
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+    - name: TaoTaoCloud Tracing Starter
+      content:
+        - name: TaoTaoCloud Starter Tracing Jaeger
+          id: taotao-cloud-starter-tracing-jaeger
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-tracing-jaeger
+          description: taotao cloud starter tracing-jaeger
+          starter: true
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Tracing Skywalking
+          id: taotao-cloud-starter-tracing-skywalking
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-tracing-skywalking
+          description: taotao cloud starter tracing-skywalking
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Tracing Micrometer
+          id: taotao-cloud-starter-tracing-micrometer
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-tracing-micrometer
+          description: taotao cloud starter tracing-micrometer
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+    - name: TaoTaoCloud Pay Starter
+      content:
+        - name: TaoTaoCloud Starter Pay Alipay
+          id: taotao-cloud-starter-pay-alipay
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-pay-alipay
+          description: taotao cloud starter pay-alipay
+          starter: true
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Pay Wxpay
+          id: taotao-cloud-starter-pay-wxpay
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-pay-wxpay
+          description: taotao cloud starter pay-wxpay
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+    - name: TaoTaoCloud Rpc Starter
+      content:
+        - name: TaoTaoCloud Starter Dubbo
+          id: taotao-cloud-starter-dubbo
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-dubbo
+          description: taotao cloud starter dubbo
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Grpc
+          id: taotao-cloud-starter-grpc
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-grpc
+          description: taotao cloud starter grpc
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+    - name: TaoTaoCloud Security Starter
+      content:
+        - name: TaoTaoCloud Starter Security Justauth
+          id: taotao-cloud-starter-security-justauth
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-security-justauth
+          description: taotao cloud starter security-justauth
+          starter: true
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Security Satoken
+          id: taotao-cloud-starter-security-satoken
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-security-satoken
+          description: taotao cloud starter security-satoken
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Security Springsecurity
+          id: taotao-cloud-starter-security-springsecurity
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-security-springsecurity
+          description: taotao cloud starter security-springsecurity
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+    - name: TaoTaoCloud Websocket Starter
+      content:
+        - name: TaoTaoCloud Starter Websocket Netty
+          id: taotao-cloud-starter-websocket-netty
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-websocket-netty
+          description: taotao cloud starter websocket netty
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Websocket
+          id: taotao-cloud-starter-websocket
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-websocket
+          description: taotao cloud starter websocket
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+    - name: TaoTaoCloud Agent Starter
+      content:
+        - name: TaoTaoCloud Starter Agent
+          id: taotao-cloud-starter-agent
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-agent
+          description: taotao cloud starter agent
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+    - name: TaoTaoCloud Apt Starter
+      content:
+        - name: TaoTaoCloud Starter Apt
+          id: taotao-cloud-starter-apt
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-apt
+          description: taotao cloud starter apt
+          scope: annotationProcessor
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+    - name: TaoTaoCloud Web Starter
+      content:
+        - name: TaoTaoCloud Starter Web
+          id: taotao-cloud-starter-web
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-web
+          description: taotao cloud starter web
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+    - name: TaoTaoCloud Test Starter
+      content:
+        - name: TaoTaoCloud Starter Test
+          id: taotao-cloud-starter-test
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-test
+          description: taotao cloud starter test
+          scope: test
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+    - name: TaoTaoCloud Ops Starter
+      content:
+        - name: TaoTaoCloud Starter Actuator
+          id: taotao-cloud-starter-actuator
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-actuator
+          description: taotao cloud starter actuator
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Metrics
+          id: taotao-cloud-starter-metrics
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-metrics
+          description: taotao cloud starter metrics
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Monitor
+          id: taotao-cloud-starter-monitor
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-monitor
+          description: taotao cloud starter monitor
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Prometheus
+          id: taotao-cloud-starter-prometheus
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-prometheus
+          description: taotao cloud starter prometheus
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+    - name: TaoTaoCloud Starter
+      content:
+        - name: TaoTaoCloud Starter Canal
+          id: taotao-cloud-starter-canal
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-canal
+          description: taotao cloud starter canal
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Captcha
+          id: taotao-cloud-starter-captcha
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-captcha
+          description: taotao cloud starter captcha
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Crypto
+          id: taotao-cloud-starter-crypto
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-crypto
+          description: taotao cloud starter crypto
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Dingtalk
+          id: taotao-cloud-starter-dingtalk
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-dingtalk
+          description: taotao cloud starter dingtalk
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Disruptor
+          id: taotao-cloud-starter-disruptor
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-disruptor
+          description: taotao cloud starter disruptor
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Elk
+          id: taotao-cloud-starter-elk
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-elk
+          description: taotao cloud starter elk
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Encrypt
+          id: taotao-cloud-starter-encrypt
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-encrypt
+          description: taotao cloud starter encrypt
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Openfeign
+          id: taotao-cloud-starter-openfeign
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-openfeign
+          description: taotao cloud starter openfeign
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Idempotent
+          id: taotao-cloud-starter-idempotent
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-idempotent
+          description: taotao cloud starter idempotent
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Idgenerator
+          id: taotao-cloud-starter-idgenerator
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-idgenerator
+          description: taotao cloud starter idgenerator
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Ip2region
+          id: taotao-cloud-starter-ip2region
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-ip2region
+          description: taotao cloud starter ip2region
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Laytpl
+          id: taotao-cloud-starter-laytpl
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-laytpl
+          description: taotao cloud starter laytpl
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Lock
+          id: taotao-cloud-starter-lock
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-lock
+          description: taotao cloud starter lock
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Logger
+          id: taotao-cloud-starter-logger
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-logger
+          description: taotao cloud starter logger
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Mail
+          id: taotao-cloud-starter-mail
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-mail
+          description: taotao cloud starter mail
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Office
+          id: taotao-cloud-starter-office
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-office
+          description: taotao cloud starter office
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Openai
+          id: taotao-cloud-starter-openai
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-openai
+          description: taotao cloud starter openai
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Openapi
+          id: taotao-cloud-starter-openapi
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-openapi
+          description: taotao cloud starter openapi
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Pinyin
+          id: taotao-cloud-starter-pinyin
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-pinyin
+          description: taotao cloud starter pinyin
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Plugins
+          id: taotao-cloud-starter-plugins
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-plugins
+          description: taotao cloud starter plugins
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Ratelimit
+          id: taotao-cloud-starter-ratelimit
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-ratelimit
+          description: taotao cloud starter ratelimit
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Retry
+          id: taotao-cloud-starter-retry
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-retry
+          description: taotao cloud starter retry
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Rxjava
+          id: taotao-cloud-starter-rxjava
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-rxjava
+          description: taotao cloud starter rxjava
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Sensitive
+          id: taotao-cloud-starter-sensitive
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-sensitive
+          description: taotao cloud starter sensitive
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Springdoc
+          id: taotao-cloud-starter-springdoc
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-springdoc
+          description: taotao cloud starter springdoc
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Sign
+          id: taotao-cloud-starter-sign
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-sign
+          description: taotao cloud starter sign
+          scope: test
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Third Client
+          id: taotao-cloud-starter-third-client
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-third-client
+          description: taotao cloud starter third-client
+          scope: test
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Threadpool
+          id: taotao-cloud-starter-threadpool
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-threadpool
+          description: taotao cloud starter threadpool
+          scope: test
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Translation
+          id: taotao-cloud-starter-translation
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-translation
+          description: taotao cloud starter translation
+          scope: test
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Useragent
+          id: taotao-cloud-starter-useragent
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-useragent
+          description: taotao cloud starter useragent
+          #compatibilityRange: "[3.0.0,3.2.0-M1)"
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Xss
+          id: taotao-cloud-starter-xss
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-xss
+          description: taotao cloud starter xss
+          #compatibilityRange: "[3.0.0,3.2.0-M1)"
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Zookeeper
+          id: taotao-cloud-starter-zookeeper
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-zookeeper
+          description: taotao cloud starter zookeeper
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Spi
+          id: taotao-cloud-starter-spi
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-spi
+          description: taotao cloud starter spi
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+    - name: TaoTaoCloud Sms Starter
+      content:
+        - name: TaoTaoCloud Starter Sms Aliyun
+          id: taotao-cloud-starter-sms-aliyun
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-sms-aliyun
+          description: taotao cloud starter sms-aliyun
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Sms Baiducloud
+          id: taotao-cloud-starter-sms-baiducloud
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-sms-baiducloud
+          description: taotao cloud starter sms-baiducloud
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Sms Chinamobile
+          id: taotao-cloud-starter-sms-chinamobile
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-sms-chinamobile
+          description: taotao cloud starter sms-chinamobile
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Sms Huaweicloud
+          id: taotao-cloud-starter-sms-huaweicloud
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-sms-huaweicloud
+          description: taotao cloud starter sms-huaweicloud
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Sms Jdcloud
+          id: taotao-cloud-starter-sms-jdcloud
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-sms-jdcloud
+          description: taotao cloud starter sms-jdcloud
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Sms Jpush
+          id: taotao-cloud-starter-sms-jpush
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-sms-jpush
+          description: taotao cloud starter sms-jpush
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Sms Netease
+          id: taotao-cloud-starter-sms-netease
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-sms-netease
+          description: taotao cloud starter sms-netease
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Sms Tencent
+          id: taotao-cloud-starter-sms-tencent
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-sms-tencent
+          description: taotao cloud starter sms-tencent
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Sms Tencentv3
+          id: taotao-cloud-starter-sms-tencentv3
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-sms-tencentv3
+          description: taotao cloud starter sms-tencentv3
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Sms Qiniu
+          id: taotao-cloud-starter-sms-qiniu
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-sms-qiniu
+          description: taotao cloud starter sms-qiniu
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Sms Upyun
+          id: taotao-cloud-starter-sms-upyun
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-sms-upyun
+          description: taotao cloud starter sms-upyun
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Sms Yunpian
+          id: taotao-cloud-starter-sms-yunpian
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-sms-yunpian
+          description: taotao cloud starter sms-yunpian
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+    - name: TaoTaoCloud Oss Starter
+      content:
+        - name: TaoTaoCloud Starter Oss Aliyun
+          id: taotao-cloud-starter-oss-aliyun
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-aliyun
+          description: taotao cloud starter oss aliyun
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Oss Aws
+          id: taotao-cloud-starter-oss-aws
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-aws
+          description: taotao cloud starter oss aws
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Oss Baidu
+          id: taotao-cloud-starter-oss-baidu
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-baidu
+          description: taotao cloud starter oss baidu
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Oss Fastdfs
+          id: taotao-cloud-starter-oss-fastdfs
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-fastdfs
+          description: taotao cloud starter oss fastdfs
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Oss Ftp
+          id: taotao-cloud-starter-oss-ftp
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-ftp
+          description: taotao cloud starter oss ftp
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Oss Huawei
+          id: taotao-cloud-starter-oss-huawei
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-huawei
+          description: taotao cloud starter oss huawei
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Oss Jd
+          id: taotao-cloud-starter-oss-jd
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-jd
+          description: taotao cloud starter oss jd
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Oss Jdbc
+          id: taotao-cloud-starter-oss-jdbc
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-jdbc
+          description: taotao cloud starter oss jdbc
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Oss Jinshan
+          id: taotao-cloud-starter-oss-jinshan
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-jinshan
+          description: taotao cloud starter oss jinshan
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Oss Local
+          id: taotao-cloud-starter-oss-local
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-local
+          description: taotao cloud starter oss local
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Oss Minio
+          id: taotao-cloud-starter-oss-minio
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-minio
+          description: taotao cloud starter oss minio
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Oss Nginx
+          id: taotao-cloud-starter-oss-nginx
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-nginx
+          description: taotao cloud starter oss nginx
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Oss Pingan
+          id: taotao-cloud-starter-oss-pingan
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-pingan
+          description: taotao cloud starter oss pingan
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Oss Qingyun
+          id: taotao-cloud-starter-oss-qingyun
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-qingyun
+          description: taotao cloud starter oss qingyun
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Oss Qiniu
+          id: taotao-cloud-starter-oss-qiniu
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-qiniu
+          description: taotao cloud starter oss qiniu
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Oss Sftp
+          id: taotao-cloud-starter-oss-sftp
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-sftp
+          description: taotao cloud starter oss sftp
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Oss Tencent
+          id: taotao-cloud-starter-oss-tencent
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-tencent
+          description: taotao cloud starter oss tencent
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Oss Ucloud
+          id: taotao-cloud-starter-oss-ucloud
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-ucloud
+          description: taotao cloud starter oss ucloud
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Oss Up
+          id: taotao-cloud-starter-oss-up
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-up
+          description: taotao cloud starter oss up
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Oss Wangyi
+          id: taotao-cloud-starter-oss-wangyi
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-oss-wangyi
+          description: taotao cloud starter oss wangyi
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+##########################################################################################
     - name: Developer Tools
       content:
         - name: GraalVM Native Support
@@ -1474,17 +2554,17 @@ initializr:
       id: groovy
       default: false
   bootVersions:
-    - name: 3.2.0 (SNAPSHOT)
-      id: 3.2.0-SNAPSHOT
+    - name: 3.2.1 (SNAPSHOT)
+      id: 3.2.1-SNAPSHOT
       default: false
-    - name: 3.2.0 (RC1)
-      id: 3.2.0-RC1
+    - name: 3.2.0
+      id: 3.2.0
       default: false
-    - name: 3.1.6 (SNAPSHOT)
-      id: 3.1.6-SNAPSHOT
+    - name: 3.1.7 (SNAPSHOT)
+      id: 3.1.7-SNAPSHOT
       default: false
-    - name: 3.1.5
-      id: 3.1.5
+    - name: 3.1.6
+      id: 3.1.6
       default: true
 
 ---
