@@ -37,38 +37,35 @@ jobs:
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v0.1.10
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: "nohup java -jar start-site-exec.jar >output.log 2>&1 &"
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: /root/start/taotao-cloud-start.sh restart
 
-
-
-      - name: set ssh key # 临时设置 ssh key
-        run: |
-          mkdir -p ~/.ssh/
-          echo "${{secrets.COSEN_ID_RSA}}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan "106.xx.xx.xx" >> ~/.ssh/known_hosts
-
-      - name: deploy
-        run: |
-          ssh work@106.xx.xx.xx "
-          cd /home/work/choba-lego/admin-fe;
-          git remote add origin https://Cosen95:${{secrets.COSEN_TOKEN}}@github.com/Choba-lego/admin-fe.git;
-          git checkout feature_dev;
-          git config pull.rebase false;
-          git pull origin feature_dev;
-          git remote remove origin;
-          
-          # 构建 prd-dev
-          # npm i;
-          # npm run build-dev;
-          
-          # 启动 docker
-          docker-compose build admin-fe; # 和 docker-compose.yml service 名字一致
-          docker-compose up -d;
-          "
-      - name: delete ssh key
-        run: rm -rf ~/.ssh/id_rsa
+#      - name: set ssh key # 临时设置 ssh key
+#        run: |
+#          mkdir -p ~/.ssh/
+#          echo "${{secrets.COSEN_ID_RSA}}" > ~/.ssh/id_rsa
+#          chmod 600 ~/.ssh/id_rsa
+#          ssh-keyscan "106.xx.xx.xx" >> ~/.ssh/known_hosts
+#
+#      - name: deploy
+#        run: |
+#          ssh work@106.xx.xx.xx "
+#          cd /home/work/choba-lego/admin-fe;
+#          git remote add origin https://Cosen95:${{secrets.COSEN_TOKEN}}@github.com/Choba-lego/admin-fe.git;
+#          git checkout feature_dev;
+#          git config pull.rebase false;
+#          git pull origin feature_dev;
+#          git remote remove origin;
+#
+#          # 构建 prd-dev
+#          # npm i;
+#          # npm run build-dev;
+#
+#          # 启动 docker
+#          docker-compose build admin-fe; # 和 docker-compose.yml service 名字一致
+#          docker-compose up -d;
+#          "
+#      - name: delete ssh key
+#        run: rm -rf ~/.ssh/id_rsa
