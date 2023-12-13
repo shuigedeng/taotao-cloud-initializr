@@ -13,14 +13,14 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FcsContributor implements ProjectContributor {
-    private static final Logger logger = LoggerFactory.getLogger(FcsContributor.class);
+public class DemoContributor implements ProjectContributor {
+    private static final Logger logger = LoggerFactory.getLogger(DemoContributor.class);
 
     private final ProjectDescription description;
     private final TemplateRenderer templateRenderer;
     private final String SOURCE_PATH = "src/main/java/";
 
-    public FcsContributor(ProjectDescription description, TemplateRenderer templateRenderer) {
+    public DemoContributor(ProjectDescription description, TemplateRenderer templateRenderer) {
         this.description = description;
         this.templateRenderer = templateRenderer;
     }

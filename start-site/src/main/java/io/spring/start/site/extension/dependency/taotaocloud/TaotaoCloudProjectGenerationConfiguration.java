@@ -1,14 +1,14 @@
 package io.spring.start.site.extension.dependency.taotaocloud;
 
-import io.spring.initializr.generator.buildsystem.maven.MavenBuild;
+import io.spring.initializr.generator.buildsystem.gradle.GradleBuildSystem;
 import io.spring.initializr.generator.condition.ConditionalOnBuildSystem;
+import io.spring.initializr.generator.condition.ConditionalOnPackaging;
 import io.spring.initializr.generator.condition.ConditionalOnRequestedDependency;
 import io.spring.initializr.generator.io.IndentingWriterFactory;
 import io.spring.initializr.generator.io.template.TemplateRenderer;
+import io.spring.initializr.generator.packaging.war.WarPackaging;
 import io.spring.initializr.generator.project.ProjectDescription;
 import io.spring.initializr.generator.project.ProjectGenerationConfiguration;
-import io.spring.initializr.generator.project.contributor.MultipleResourcesProjectContributor;
-import io.spring.initializr.generator.project.contributor.ProjectContributor;
 import io.spring.initializr.metadata.InitializrMetadata;
 import org.springframework.context.annotation.Bean;
 
@@ -30,9 +30,13 @@ public class TaotaoCloudProjectGenerationConfiguration {
         this.templateRenderer = templateRenderer;
     }
 
+    // 如果系统是gradle构建
+    @ConditionalOnBuildSystem(GradleBuildSystem.ID)
+// 打包方式为war
+    @ConditionalOnPackaging(WarPackaging.ID)
     @Bean
-    public FcsContributor fcsContributor(ProjectDescription description,TemplateRenderer templateRenderer) {
-        return new FcsContributor(description, templateRenderer);
+    public DemoContributor fcsContributor(ProjectDescription description, TemplateRenderer templateRenderer) {
+        return new DemoContributor(description, templateRenderer);
     }
 
     // 添加README.md
