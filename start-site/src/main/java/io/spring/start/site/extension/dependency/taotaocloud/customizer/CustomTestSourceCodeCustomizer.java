@@ -13,26 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.spring.start.site.extension.dependency.taotaocloud;
+package io.spring.start.site.extension.dependency.taotaocloud.customizer;
 
-import io.spring.initializr.generator.buildsystem.maven.MavenBuild;
-import io.spring.initializr.generator.spring.build.BuildCustomizer;
+import io.spring.initializr.generator.language.java.JavaCompilationUnit;
+import io.spring.initializr.generator.language.java.JavaSourceCode;
+import io.spring.initializr.generator.language.java.JavaTypeDeclaration;
+import io.spring.initializr.generator.spring.code.TestSourceCodeCustomizer;
 
 /**
- * CustomBuildCustomizer
+ * 自定义测试 Application 类的源码。
  *
  * @author shuigedeng
  * @version 2022.09
- * @since 2023-12-13 22:06
+ * @since 2023-12-13 21:58
  */
-public class CustomBuildCustomizer implements BuildCustomizer<MavenBuild> {
+public class CustomTestSourceCodeCustomizer implements TestSourceCodeCustomizer<JavaTypeDeclaration, JavaCompilationUnit, JavaSourceCode> {
     @Override
-    public void customize(MavenBuild build) {
-        if (build.dependencies().has("myBatisGenerator")){
-            build.dependencies().remove("myBatisGenerator");
-            build.plugins().add("org.mybatis.generator",
-                    "mybatis-generator-maven-plugin",(plugin) -> plugin
-                            .dependency("mysql","mysql-connector-java","${mysql.version}"));
-        }
+    public void customize(JavaSourceCode sourceCode) {
+
     }
 }

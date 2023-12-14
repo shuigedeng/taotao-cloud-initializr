@@ -13,21 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.spring.start.site.extension.dependency.taotaocloud;
+package io.spring.start.site.extension.dependency.taotaocloud.customizer;
 
-import io.spring.initializr.generator.spring.documentation.HelpDocument;
-import io.spring.initializr.generator.spring.documentation.HelpDocumentCustomizer;
+import io.spring.initializr.generator.buildsystem.gradle.GradleBuild;
+import io.spring.initializr.generator.spring.build.BuildCustomizer;
 
 /**
- * 自定义项目的帮助文档。
+ * 定义Maven/Gradle构建过程，如增加maven build插件
  *
  * @author shuigedeng
  * @version 2022.09
- * @since 2023-12-13 21:54
+ * @since 2023-12-13 22:06
  */
-public class CustomHelpDocumentCustomizer implements HelpDocumentCustomizer {
+public class CustomGradleBuildCustomizer implements BuildCustomizer<GradleBuild> {
     @Override
-    public void customize(HelpDocument document) {
+    public void customize(GradleBuild build) {
 
     }
 }

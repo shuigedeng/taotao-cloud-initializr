@@ -13,21 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.spring.start.site.extension.dependency.taotaocloud;
+package io.spring.start.site.extension.dependency.taotaocloud.customizer;
 
-import io.spring.initializr.generator.spring.scm.git.GitIgnore;
-import io.spring.initializr.generator.spring.scm.git.GitIgnoreCustomizer;
+import io.spring.initializr.generator.language.java.JavaCompilationUnit;
+import io.spring.initializr.generator.language.java.JavaTypeDeclaration;
+import io.spring.initializr.generator.spring.code.MainCompilationUnitCustomizer;
 
 /**
- * 自定义项目的 .gitignore 文件。
+ * 自定义 MainApplication 编译单元。
  *
  * @author shuigedeng
  * @version 2022.09
- * @since 2023-12-13 21:53
+ * @since 2023-12-13 21:48
  */
-public class CustomGitIgnoreCustomizer implements GitIgnoreCustomizer {
+public class CustomMainCompilationUnitCustomizer implements MainCompilationUnitCustomizer<JavaTypeDeclaration, JavaCompilationUnit> {
     @Override
-    public void customize(GitIgnore gitIgnore) {
-
+    public void customize(JavaCompilationUnit compilationUnit) {
     }
 }

@@ -13,17 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.spring.start.site.extension.dependency.taotaocloud;
+package io.spring.start.site.extension.dependency.taotaocloud.customizer;
 
 import io.spring.initializr.generator.io.template.TemplateRenderer;
+import io.spring.initializr.generator.language.ClassName;
 import io.spring.initializr.generator.language.java.JavaTypeDeclaration;
 import io.spring.initializr.generator.project.ProjectDescription;
 import io.spring.initializr.generator.spring.code.MainApplicationTypeCustomizer;
 
-import java.lang.annotation.Annotation;
-
 /**
- * 自定义 MainApplication 类。
+ * 自定义 MainApplication 类。 生成main方法，主方法
  *
  * @author shuigedeng
  * @version 2022.09
@@ -41,12 +40,14 @@ public class CustomMainApplicationTypeCustomizer implements MainApplicationTypeC
 
     @Override
     public void customize(JavaTypeDeclaration typeDeclaration) {
-//        String groupId = description.getGroupId();
-//        String artifactId = description.getArtifactId();
-//        String path = groupId + "." + artifactId;
-//        String value = path + ".dao";
-//        Annotation annotation = Annotation.name("org.mybatis.spring.annotation.MapperScan",
-//                (ann) -> ann.attribute("basePackages", String.class, value));
-//        typeDeclaration.annotate(annotation);
+        String groupId = description.getGroupId();
+        String artifactId = description.getArtifactId();
+        String path = groupId + "." + artifactId;
+        String value = path + ".dao";
+
+        typeDeclaration.annotations().add(ClassName.of("org.mybatis.spring.annotation.MapperScan"), builder -> {
+            builder.add("basePackages", String.class, value);
+        });
+
     }
 }

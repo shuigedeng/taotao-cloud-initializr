@@ -1,4 +1,4 @@
-package io.spring.start.site.extension.dependency.taotaocloud;
+package io.spring.start.site.extension.dependency.taotaocloud.contributor;
 
 import io.spring.initializr.generator.io.template.TemplateRenderer;
 import io.spring.initializr.generator.project.ProjectDescription;
@@ -13,14 +13,14 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DemoContributor implements ProjectContributor {
-    private static final Logger logger = LoggerFactory.getLogger(DemoContributor.class);
+public class DemoProjectContributor implements ProjectContributor {
+    private static final Logger logger = LoggerFactory.getLogger(DemoProjectContributor.class);
 
     private final ProjectDescription description;
     private final TemplateRenderer templateRenderer;
     private final String SOURCE_PATH = "src/main/java/";
 
-    public DemoContributor(ProjectDescription description, TemplateRenderer templateRenderer) {
+    public DemoProjectContributor(ProjectDescription description, TemplateRenderer templateRenderer) {
         this.description = description;
         this.templateRenderer = templateRenderer;
     }

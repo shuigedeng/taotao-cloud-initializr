@@ -13,21 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.spring.start.site.extension.dependency.taotaocloud;
+package io.spring.start.site.extension.dependency.taotaocloud.customizer;
 
-import io.spring.initializr.generator.project.MutableProjectDescription;
-import io.spring.initializr.generator.project.ProjectDescriptionCustomizer;
+import io.spring.initializr.generator.language.java.JavaTypeDeclaration;
+import io.spring.initializr.generator.spring.code.TestApplicationTypeCustomizer;
 
 /**
- * 自定义 ProjectDescription ；即在生成项目文件之前，允许调整项目描述信息。
+ * 自定义测试 Application 类。
  *
  * @author shuigedeng
  * @version 2022.09
- * @since 2023-12-13 21:55
+ * @since 2023-12-13 21:57
  */
-public class CustomProjectDescriptionCustomizer implements ProjectDescriptionCustomizer {
+public class CustomTestApplicationTypeCustomizer implements TestApplicationTypeCustomizer<JavaTypeDeclaration> {
     @Override
-    public void customize(MutableProjectDescription description) {
+    public void customize(JavaTypeDeclaration typeDeclaration) {
 
     }
 }

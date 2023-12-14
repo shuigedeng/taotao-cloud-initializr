@@ -13,23 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.spring.start.site.extension.dependency.taotaocloud;
+package io.spring.start.site.extension.dependency.taotaocloud.customizer;
 
-import io.spring.initializr.generator.language.java.JavaCompilationUnit;
-import io.spring.initializr.generator.language.java.JavaSourceCode;
-import io.spring.initializr.generator.language.java.JavaTypeDeclaration;
-import io.spring.initializr.generator.spring.code.MainSourceCodeCustomizer;
+import io.spring.initializr.metadata.InitializrMetadata;
+import io.spring.initializr.metadata.InitializrMetadataCustomizer;
 
 /**
- * 自定义 MainApplication 源码。
+ * 自定义项目初始化配置元数据；这个 Customizer 比较特殊，框架会在首次加载元数据配置时调用。
  *
  * @author shuigedeng
  * @version 2022.09
- * @since 2023-12-13 21:51
+ * @since 2023-12-13 21:55
  */
-public class CustomMainSourceCodeCustomizer implements MainSourceCodeCustomizer<JavaTypeDeclaration, JavaCompilationUnit, JavaSourceCode> {
+public class CustomInitializrMetadataCustomizer implements InitializrMetadataCustomizer {
     @Override
-    public void customize(JavaSourceCode sourceCode) {
+    public void customize(InitializrMetadata metadata) {
 
     }
 }

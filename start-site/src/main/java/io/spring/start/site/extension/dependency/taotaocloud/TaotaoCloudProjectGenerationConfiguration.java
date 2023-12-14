@@ -10,6 +10,7 @@ import io.spring.initializr.generator.packaging.war.WarPackaging;
 import io.spring.initializr.generator.project.ProjectDescription;
 import io.spring.initializr.generator.project.ProjectGenerationConfiguration;
 import io.spring.initializr.metadata.InitializrMetadata;
+import io.spring.start.site.extension.dependency.taotaocloud.contributor.DemoProjectContributor;
 import org.springframework.context.annotation.Bean;
 
 @ProjectGenerationConfiguration
@@ -35,8 +36,8 @@ public class TaotaoCloudProjectGenerationConfiguration {
 // 打包方式为war
     @ConditionalOnPackaging(WarPackaging.ID)
     @Bean
-    public DemoContributor fcsContributor(ProjectDescription description, TemplateRenderer templateRenderer) {
-        return new DemoContributor(description, templateRenderer);
+    public DemoProjectContributor fcsContributor(ProjectDescription description, TemplateRenderer templateRenderer) {
+        return new DemoProjectContributor(description, templateRenderer);
     }
 
     // 添加README.md

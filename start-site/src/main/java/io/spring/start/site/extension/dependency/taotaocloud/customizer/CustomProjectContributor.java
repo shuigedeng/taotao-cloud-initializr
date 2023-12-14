@@ -1,4 +1,4 @@
-package io.spring.start.site.extension.dependency.taotaocloud;
+package io.spring.start.site.extension.dependency.taotaocloud.customizer;
 
 import io.spring.initializr.generator.io.IndentingWriterFactory;
 import io.spring.initializr.generator.project.ProjectDescription;
@@ -8,13 +8,16 @@ import io.spring.initializr.metadata.InitializrMetadata;
 import java.io.IOException;
 import java.nio.file.Path;
 
-public class ModuleContributor implements ProjectContributor {
+/**
+ * 定义一些个性化的项目目录或者文件
+ */
+public class CustomProjectContributor implements ProjectContributor {
 
     private final ProjectDescription projectDescription;
     private final IndentingWriterFactory indentingWriterFactory;
     private final InitializrMetadata initializrMetadata;
 
-    public ModuleContributor(ProjectDescription projectDescription, IndentingWriterFactory indentingWriterFactory, InitializrMetadata initializrMetadata) {
+    public CustomProjectContributor(ProjectDescription projectDescription, IndentingWriterFactory indentingWriterFactory, InitializrMetadata initializrMetadata) {
         this.projectDescription = projectDescription;
         this.indentingWriterFactory = indentingWriterFactory;
         this.initializrMetadata = initializrMetadata;

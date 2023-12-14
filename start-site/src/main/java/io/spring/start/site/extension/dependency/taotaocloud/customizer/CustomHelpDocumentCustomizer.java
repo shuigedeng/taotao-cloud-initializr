@@ -13,21 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.spring.start.site.extension.dependency.taotaocloud;
+package io.spring.start.site.extension.dependency.taotaocloud.customizer;
 
-import io.spring.initializr.metadata.InitializrMetadata;
-import io.spring.initializr.metadata.InitializrMetadataCustomizer;
+import io.spring.initializr.generator.spring.documentation.HelpDocument;
+import io.spring.initializr.generator.spring.documentation.HelpDocumentCustomizer;
 
 /**
- * 自定义项目初始化配置元数据；这个 Customizer 比较特殊，框架会在首次加载元数据配置时调用。
+ * 自定义项目的帮助文档。
  *
  * @author shuigedeng
  * @version 2022.09
- * @since 2023-12-13 21:55
+ * @since 2023-12-13 21:54
  */
-public class CustomInitializrMetadataCustomizer implements InitializrMetadataCustomizer {
+public class CustomHelpDocumentCustomizer implements HelpDocumentCustomizer {
     @Override
-    public void customize(InitializrMetadata metadata) {
+    public void customize(HelpDocument document) {
 
     }
 }

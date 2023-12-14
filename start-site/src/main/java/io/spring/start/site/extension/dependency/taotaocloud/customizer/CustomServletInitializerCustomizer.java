@@ -13,23 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.spring.start.site.extension.dependency.taotaocloud;
+package io.spring.start.site.extension.dependency.taotaocloud.customizer;
 
-import io.spring.initializr.generator.language.java.JavaCompilationUnit;
-import io.spring.initializr.generator.language.java.JavaSourceCode;
+import io.spring.initializr.generator.language.TypeDeclaration;
 import io.spring.initializr.generator.language.java.JavaTypeDeclaration;
-import io.spring.initializr.generator.spring.code.TestSourceCodeCustomizer;
+import io.spring.initializr.generator.spring.code.ServletInitializerCustomizer;
 
 /**
- * 自定义测试 Application 类的源码。
+ * 自定义 web 应用在类上的配置内容。
  *
  * @author shuigedeng
  * @version 2022.09
- * @since 2023-12-13 21:58
+ * @since 2023-12-13 21:56
  */
-public class CustomTestSourceCodeCustomizer implements TestSourceCodeCustomizer<JavaTypeDeclaration, JavaCompilationUnit, JavaSourceCode> {
+public class CustomServletInitializerCustomizer implements ServletInitializerCustomizer<JavaTypeDeclaration> {
     @Override
-    public void customize(JavaSourceCode sourceCode) {
+    public void customize(JavaTypeDeclaration typeDeclaration) {
 
     }
 }
