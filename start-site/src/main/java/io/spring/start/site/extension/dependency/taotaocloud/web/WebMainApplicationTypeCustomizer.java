@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.spring.start.site.extension.dependency.taotaocloud.customizer;
+package io.spring.start.site.extension.dependency.taotaocloud.web;
 
 import io.spring.initializr.generator.io.template.TemplateRenderer;
 import io.spring.initializr.generator.language.ClassName;
@@ -28,12 +28,12 @@ import io.spring.initializr.generator.spring.code.MainApplicationTypeCustomizer;
  * @version 2022.09
  * @since 2023-12-13 21:44
  */
-public class CustomMainApplicationTypeCustomizer implements MainApplicationTypeCustomizer<JavaTypeDeclaration> {
+public class WebMainApplicationTypeCustomizer implements MainApplicationTypeCustomizer<JavaTypeDeclaration> {
 
     private final ProjectDescription description;
     private final TemplateRenderer templateRenderer;
 
-    public CustomMainApplicationTypeCustomizer(ProjectDescription description, TemplateRenderer templateRenderer) {
+    public WebMainApplicationTypeCustomizer(ProjectDescription description, TemplateRenderer templateRenderer) {
         this.description = description;
         this.templateRenderer = templateRenderer;
     }
@@ -46,7 +46,7 @@ public class CustomMainApplicationTypeCustomizer implements MainApplicationTypeC
         String value = path + ".dao";
 
         typeDeclaration.annotations().add(ClassName.of("org.mybatis.spring.annotation.MapperScan"), builder -> {
-            builder.add("basePackages", String.class, value);
+            builder.add("basePackages", value);
         });
 
     }

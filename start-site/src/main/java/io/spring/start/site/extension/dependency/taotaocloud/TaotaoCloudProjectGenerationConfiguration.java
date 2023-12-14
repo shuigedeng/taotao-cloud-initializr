@@ -1,20 +1,20 @@
 package io.spring.start.site.extension.dependency.taotaocloud;
 
-import io.spring.initializr.generator.buildsystem.gradle.GradleBuildSystem;
-import io.spring.initializr.generator.condition.ConditionalOnBuildSystem;
-import io.spring.initializr.generator.condition.ConditionalOnPackaging;
-import io.spring.initializr.generator.condition.ConditionalOnRequestedDependency;
 import io.spring.initializr.generator.io.IndentingWriterFactory;
 import io.spring.initializr.generator.io.template.TemplateRenderer;
-import io.spring.initializr.generator.packaging.war.WarPackaging;
 import io.spring.initializr.generator.project.ProjectDescription;
 import io.spring.initializr.generator.project.ProjectGenerationConfiguration;
+import io.spring.initializr.generator.project.contributor.MultipleResourcesProjectContributor;
+import io.spring.initializr.generator.project.contributor.ProjectContributor;
 import io.spring.initializr.metadata.InitializrMetadata;
-import io.spring.start.site.extension.dependency.taotaocloud.contributor.DemoProjectContributor;
+import io.spring.start.site.extension.dependency.taotaocloud.web.*;
 import org.springframework.context.annotation.Bean;
 
 @ProjectGenerationConfiguration
-@ConditionalOnRequestedDependency("taotao-cloud-starter-web")
+// 如果系统是gradle构建
+//     @ConditionalOnBuildSystem(GradleBuildSystem.ID)
+// // 打包方式为war
+//     @ConditionalOnPackaging(WarPackaging.ID)
 public class TaotaoCloudProjectGenerationConfiguration {
     private final InitializrMetadata initializrMetadata;
     private final ProjectDescription projectDescription;
@@ -31,40 +31,46 @@ public class TaotaoCloudProjectGenerationConfiguration {
         this.templateRenderer = templateRenderer;
     }
 
-    // 如果系统是gradle构建
-    @ConditionalOnBuildSystem(GradleBuildSystem.ID)
-// 打包方式为war
-    @ConditionalOnPackaging(WarPackaging.ID)
+
+    /**
+     * 添加controller service mapper
+     *
+     * @return
+     */
     @Bean
-    public DemoProjectContributor fcsContributor(ProjectDescription description, TemplateRenderer templateRenderer) {
-        return new DemoProjectContributor(description, templateRenderer);
+    //@ConditionalOnRequestedDependency("taotao-cloud-starter-web")
+    public WebProjectContributor webProjectContributor(ProjectDescription description, TemplateRenderer templateRenderer) {
+        return new WebProjectContributor(description, templateRenderer);
     }
 
     // 添加README.md
-//    @Bean
-//    public ProjectContributor readmeProjectContributor() {
-//        return new MultipleResourcesProjectContributor("contributor/readme");
-//    }
+    @Bean
+    public ProjectContributor readmeProjectContributor() {
+        return new MultipleResourcesProjectContributor("contributor/readme");
+    }
 
-//    /**
-//     * 模块化的贡献者
-//     *
-//     * @return
-//     */
-//    @Bean
-//    public ProjectContributor mouduleContributor() {
-//        return new ModuleContributor(projectDescription, indentingWriterFactory, initializrMetadata);
-//    }
-//
-//    /**
-//     * 项目父结构下的pom.xml文件生成器 <br/>
-//     * {@link MavenBuild} 没有module标签功能; 并且parent写死为spring-boot-dependencies
-//     *
-//     * @param build
-//     * @return
-//     */
-//    @Bean
-//    public CustomMavenBuildProjectContributor customMavenBuildProjectContributor(ModuleMavenBuild build) {
-//        return new CustomMavenBuildProjectContributor(build, indentingWriterFactory);
-//    }
+    // 添加application.yml配置文件
+    @Bean
+    public WebApplicationYmlFileCustomizer webApplicationYmlFileCustomizer() {
+        return new WebApplicationYmlFileCustomizer();
+    }
+
+    // 添加bootstrap.yml配置文件
+    @Bean
+    public WebBootstrapYmlFileCustomizer webBootstrapYmlFileCustomizer() {
+        return new WebBootstrapYmlFileCustomizer();
+    }
+
+
+    // 添加application.properties文件
+    @Bean
+    public WebApplicationPropertiesContributor webApplicationPropertiesContributor() {
+        return new WebApplicationPropertiesContributor();
+    }
+
+    // 主类添加注解
+    @Bean
+    public WebMainApplicationTypeCustomizer webMainApplicationTypeCustomizer(ProjectDescription description, TemplateRenderer templateRenderer) {
+        return new WebMainApplicationTypeCustomizer(description, templateRenderer);
+    }
 }

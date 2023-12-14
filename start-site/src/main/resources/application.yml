@@ -39,15 +39,15 @@ initializr:
   group-id:
     value: com.taotao.cloud
   artifact-id:
-    value: taotao-cloud-demo
+    value: demo
   name:
-    value: taotao-cloud-demo
+    value: demo
   description:
     value: demo project for taotao cloud
   version:
     value: 0.0.1-SNAPSHOT
-  package-name:
-    value: com.taotao.cloud.demo
+  #package-name:
+  #  value: com.taotao.cloud.demo
   env:
     boms:
       taotao-cloud:
