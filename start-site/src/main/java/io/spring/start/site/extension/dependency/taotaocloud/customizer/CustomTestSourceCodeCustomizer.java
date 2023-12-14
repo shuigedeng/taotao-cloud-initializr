@@ -30,6 +30,5 @@ import io.spring.initializr.generator.spring.code.TestSourceCodeCustomizer;
 public class CustomTestSourceCodeCustomizer implements TestSourceCodeCustomizer<JavaTypeDeclaration, JavaCompilationUnit, JavaSourceCode> {
     @Override
     public void customize(JavaSourceCode sourceCode) {
-
     }
 }

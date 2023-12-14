@@ -13,21 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.spring.start.site.extension.dependency.taotaocloud.customizer;
+package io.spring.start.site.extension.dependency.taotaocloud.web;
 
-import io.spring.initializr.generator.spring.documentation.HelpDocument;
-import io.spring.initializr.generator.spring.documentation.HelpDocumentCustomizer;
+import io.spring.initializr.generator.spring.scm.git.GitIgnore;
+import io.spring.initializr.generator.spring.scm.git.GitIgnoreCustomizer;
 
 /**
- * 自定义项目的帮助文档。
+ * 自定义项目的 .gitignore 文件。
  *
  * @author shuigedeng
  * @version 2022.09
- * @since 2023-12-13 21:54
+ * @since 2023-12-13 21:53
  */
-public class CustomHelpDocumentCustomizer implements HelpDocumentCustomizer {
+public class WebGitIgnoreCustomizer implements GitIgnoreCustomizer {
     @Override
-    public void customize(HelpDocument document) {
-
+    public void customize(GitIgnore gitIgnore) {
+        gitIgnore.getGeneral().add("**/target");
+        gitIgnore.getGeneral().add("**/out");
+        gitIgnore.getGeneral().add("**/xxxxx");
     }
 }

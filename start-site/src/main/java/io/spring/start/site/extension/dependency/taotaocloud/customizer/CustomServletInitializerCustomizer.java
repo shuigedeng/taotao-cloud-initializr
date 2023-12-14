@@ -15,7 +15,6 @@
  */
 package io.spring.start.site.extension.dependency.taotaocloud.customizer;
 
-import io.spring.initializr.generator.language.TypeDeclaration;
 import io.spring.initializr.generator.language.java.JavaTypeDeclaration;
 import io.spring.initializr.generator.spring.code.ServletInitializerCustomizer;
 
@@ -29,6 +28,5 @@ import io.spring.initializr.generator.spring.code.ServletInitializerCustomizer;
 public class CustomServletInitializerCustomizer implements ServletInitializerCustomizer<JavaTypeDeclaration> {
     @Override
     public void customize(JavaTypeDeclaration typeDeclaration) {
-
     }
 }

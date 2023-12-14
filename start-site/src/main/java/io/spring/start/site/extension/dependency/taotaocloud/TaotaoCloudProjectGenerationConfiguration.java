@@ -1,6 +1,7 @@
 package io.spring.start.site.extension.dependency.taotaocloud;
 
 import io.spring.initializr.generator.io.IndentingWriterFactory;
+import io.spring.initializr.generator.io.template.MustacheTemplateRenderer;
 import io.spring.initializr.generator.io.template.TemplateRenderer;
 import io.spring.initializr.generator.project.ProjectDescription;
 import io.spring.initializr.generator.project.ProjectGenerationConfiguration;
@@ -72,5 +73,17 @@ public class TaotaoCloudProjectGenerationConfiguration {
     @Bean
     public WebMainApplicationTypeCustomizer webMainApplicationTypeCustomizer(ProjectDescription description, TemplateRenderer templateRenderer) {
         return new WebMainApplicationTypeCustomizer(description, templateRenderer);
+    }
+
+    //添加ignore
+    @Bean
+    public WebGitIgnoreCustomizer webGitIgnoreCustomizer(){
+        return new WebGitIgnoreCustomizer();
+    }
+
+    //添加帮助文档
+    @Bean
+    public WebHelpDocumentCustomizer webHelpDocumentCustomizer(MustacheTemplateRenderer templateRenderer){
+        return new WebHelpDocumentCustomizer(templateRenderer);
     }
 }
