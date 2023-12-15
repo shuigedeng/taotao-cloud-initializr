@@ -80,6 +80,11 @@ public class TaoTaoCloudProjectGenerationConfiguration {
     public TaoTaoCloudMainSourceCodeCustomizer taoTaoCloudMainSourceCodeCustomizer(){
         return new TaoTaoCloudMainSourceCodeCustomizer();
     }
+
+    @Bean
+    public TaoTaoCloudServletInitializerCustomizer taoTaoCloudServletInitializerCustomizer(){
+        return new TaoTaoCloudServletInitializerCustomizer();
+    }
 }
 
 

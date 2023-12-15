@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.spring.start.site.extension.dependency.taotaocloud.customizer;
+package io.spring.start.site.extension.dependency.taotaocloud;
 
+import io.spring.initializr.generator.language.java.JavaFieldDeclaration;
 import io.spring.initializr.generator.language.java.JavaTypeDeclaration;
 import io.spring.initializr.generator.spring.code.ServletInitializerCustomizer;
 
@@ -25,8 +26,14 @@ import io.spring.initializr.generator.spring.code.ServletInitializerCustomizer;
  * @version 2022.09
  * @since 2023-12-13 21:56
  */
-public class CustomServletInitializerCustomizer implements ServletInitializerCustomizer<JavaTypeDeclaration> {
+public class TaoTaoCloudServletInitializerCustomizer implements ServletInitializerCustomizer<JavaTypeDeclaration> {
     @Override
     public void customize(JavaTypeDeclaration typeDeclaration) {
+        JavaFieldDeclaration javaFieldDeclaration =  JavaFieldDeclaration.field("xx")
+                .value("")
+                .modifiers(1)
+                        .returning("String");
+
+        typeDeclaration.addFieldDeclaration(javaFieldDeclaration);
     }
 }
