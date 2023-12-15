@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.spring.start.site.extension.dependency.taotaocloud.customizer;
+package io.spring.start.site.extension.dependency.taotaocloud;
 
+import io.spring.initializr.generator.language.ClassName;
 import io.spring.initializr.generator.language.java.JavaCompilationUnit;
 import io.spring.initializr.generator.language.java.JavaSourceCode;
 import io.spring.initializr.generator.language.java.JavaTypeDeclaration;
@@ -27,8 +28,14 @@ import io.spring.initializr.generator.spring.code.MainSourceCodeCustomizer;
  * @version 2022.09
  * @since 2023-12-13 21:51
  */
-public class CustomMainSourceCodeCustomizer implements MainSourceCodeCustomizer<JavaTypeDeclaration, JavaCompilationUnit, JavaSourceCode> {
+public class TaoTaoCloudMainSourceCodeCustomizer implements MainSourceCodeCustomizer<JavaTypeDeclaration, JavaCompilationUnit, JavaSourceCode> {
     @Override
     public void customize(JavaSourceCode sourceCode) {
+        JavaCompilationUnit compilationUnit = sourceCode.createCompilationUnit("com.taotao.cloud.dem.xxx", "XxxDemo");
+        JavaTypeDeclaration typeDeclaration = compilationUnit.createTypeDeclaration("XxxDemo");
+
+        typeDeclaration.annotations().add(ClassName.of("org.mybatis.spring.annotation.MapperScan"), builder -> {
+            builder.add("basePackages", "com.taotao.cloud.dem.xxx.mapper");
+        });
     }
 }

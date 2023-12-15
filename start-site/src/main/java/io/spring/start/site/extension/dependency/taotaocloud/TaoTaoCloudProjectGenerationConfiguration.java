@@ -1,5 +1,8 @@
 package io.spring.start.site.extension.dependency.taotaocloud;
 
+import io.spring.initializr.generator.buildsystem.gradle.GradleBuildSystem;
+import io.spring.initializr.generator.buildsystem.maven.MavenBuildSystem;
+import io.spring.initializr.generator.condition.ConditionalOnBuildSystem;
 import io.spring.initializr.generator.io.IndentingWriterFactory;
 import io.spring.initializr.generator.io.template.MustacheTemplateRenderer;
 import io.spring.initializr.generator.io.template.TemplateRenderer;
@@ -33,13 +36,13 @@ public class TaoTaoCloudProjectGenerationConfiguration {
 
     // 添加README.md
     @Bean
-    public TaoTaoCloudMultipleResourcesProjectContributor readmeProjectContributor() {
+    public TaoTaoCloudMultipleResourcesProjectContributor taoTaoCloudMultipleResourcesProjectContributor() {
         return new TaoTaoCloudMultipleResourcesProjectContributor("contributor/readme");
     }
 
     // 添加bootstrap.yml配置文件
     @Bean
-    public TaoTaoCloudBootstrapYmlFileCustomizer webBootstrapYmlFileCustomizer() {
+    public TaoTaoCloudBootstrapYmlFileCustomizer taoTaoCloudBootstrapYmlFileCustomizer() {
         return new TaoTaoCloudBootstrapYmlFileCustomizer();
     }
 
@@ -51,16 +54,32 @@ public class TaoTaoCloudProjectGenerationConfiguration {
 
     //添加ignore
     @Bean
-    public TaoTaoCloudGitIgnoreCustomizer webGitIgnoreCustomizer(){
+    public TaoTaoCloudGitIgnoreCustomizer taoTaoCloudGitIgnoreCustomizer(){
         return new TaoTaoCloudGitIgnoreCustomizer();
     }
 
     //添加帮助文档
     @Bean
-    public TaoTaoCloudHelpDocumentCustomizer webHelpDocumentCustomizer(MustacheTemplateRenderer templateRenderer){
+    public TaoTaoCloudHelpDocumentCustomizer taoTaoCloudHelpDocumentCustomizer(MustacheTemplateRenderer templateRenderer){
         return new TaoTaoCloudHelpDocumentCustomizer(templateRenderer);
     }
 
+    @Bean
+    @ConditionalOnBuildSystem(GradleBuildSystem.ID)
+    public TaoTaoCloudGradleBuildCustomizer taoTaoCloudGradleBuildCustomizer(){
+        return new TaoTaoCloudGradleBuildCustomizer();
+    }
+
+    @Bean
+    @ConditionalOnBuildSystem(MavenBuildSystem.ID)
+    public TaoTaoCloudMavenBuildCustomizer taoTaoCloudMavenBuildCustomizer(){
+        return new TaoTaoCloudMavenBuildCustomizer();
+    }
+
+    @Bean
+    public TaoTaoCloudMainSourceCodeCustomizer taoTaoCloudMainSourceCodeCustomizer(){
+        return new TaoTaoCloudMainSourceCodeCustomizer();
+    }
 }
 
 

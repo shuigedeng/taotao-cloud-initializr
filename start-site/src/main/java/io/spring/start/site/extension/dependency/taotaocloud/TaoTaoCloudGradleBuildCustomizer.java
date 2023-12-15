@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.spring.start.site.extension.dependency.taotaocloud.customizer;
+package io.spring.start.site.extension.dependency.taotaocloud;
 
-import io.spring.initializr.generator.buildsystem.maven.MavenBuild;
+import io.spring.initializr.generator.buildsystem.gradle.GradleBuild;
 import io.spring.initializr.generator.spring.build.BuildCustomizer;
 
 /**
@@ -25,14 +25,9 @@ import io.spring.initializr.generator.spring.build.BuildCustomizer;
  * @version 2022.09
  * @since 2023-12-13 22:06
  */
-public class CustomMavenBuildCustomizer implements BuildCustomizer<MavenBuild> {
+public class TaoTaoCloudGradleBuildCustomizer implements BuildCustomizer<GradleBuild> {
     @Override
-    public void customize(MavenBuild build) {
-        if (build.dependencies().has("myBatisGenerator")){
-            build.dependencies().remove("myBatisGenerator");
-            build.plugins().add("org.mybatis.generator",
-                    "mybatis-generator-maven-plugin",(plugin) -> plugin
-                            .dependency("mysql","mysql-connector-java","${mysql.version}"));
-        }
+    public void customize(GradleBuild build) {
+        build.snippets().add((writer) -> writer.print("//这是我的注释"));
     }
 }
