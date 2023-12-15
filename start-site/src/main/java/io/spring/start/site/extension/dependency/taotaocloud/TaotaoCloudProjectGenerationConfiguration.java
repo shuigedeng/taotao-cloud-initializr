@@ -1,5 +1,6 @@
 package io.spring.start.site.extension.dependency.taotaocloud;
 
+import io.spring.initializr.generator.condition.ConditionalOnRequestedDependency;
 import io.spring.initializr.generator.io.IndentingWriterFactory;
 import io.spring.initializr.generator.io.template.MustacheTemplateRenderer;
 import io.spring.initializr.generator.io.template.TemplateRenderer;
@@ -8,6 +9,7 @@ import io.spring.initializr.generator.project.ProjectGenerationConfiguration;
 import io.spring.initializr.generator.project.contributor.MultipleResourcesProjectContributor;
 import io.spring.initializr.generator.project.contributor.ProjectContributor;
 import io.spring.initializr.metadata.InitializrMetadata;
+import io.spring.start.site.extension.dependency.taotaocloud.dingtalk.DingTalkApplicationYmlFileCustomizer;
 import io.spring.start.site.extension.dependency.taotaocloud.web.*;
 import org.springframework.context.annotation.Bean;
 
@@ -85,5 +87,11 @@ public class TaotaoCloudProjectGenerationConfiguration {
     @Bean
     public WebHelpDocumentCustomizer webHelpDocumentCustomizer(MustacheTemplateRenderer templateRenderer){
         return new WebHelpDocumentCustomizer(templateRenderer);
+    }
+
+    @ConditionalOnRequestedDependency("taotao-cloud-starter-dingtalk")
+    @Bean
+    public DingTalkApplicationYmlFileCustomizer dingTalkApplicationYmlFileCustomizer(){
+        return new DingTalkApplicationYmlFileCustomizer();
     }
 }
