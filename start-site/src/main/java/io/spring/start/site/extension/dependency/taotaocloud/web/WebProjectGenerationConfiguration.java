@@ -67,11 +67,6 @@ public class WebProjectGenerationConfiguration {
         return new WebMainApplicationTypeCustomizer(description, templateRenderer);
     }
 
-    @ConditionalOnRequestedDependency("taotao-cloud-starter-dingtalk")
-    @Bean
-    public DingTalkApplicationYmlFileCustomizer dingTalkApplicationYmlFileCustomizer(){
-        return new DingTalkApplicationYmlFileCustomizer();
-    }
 }
 
 

@@ -12,8 +12,6 @@ public class DingTalkApplicationYmlFileCustomizer implements ApplicationYmlFileC
     public void customize(ApplicationYmlFile applicationYmlFile) {
         ApplicationYmlServiceContainer applicationYmlServiceContainer = applicationYmlFile.getApplicationYmlServiceContainer();
         List<String> data = new LinkedList<>();
-        data.add("taotao:");
-        data.add("  cloud:");
         data.add("    ding-talk:");
         data.add("      request:");
         data.add("        enabled: true");
