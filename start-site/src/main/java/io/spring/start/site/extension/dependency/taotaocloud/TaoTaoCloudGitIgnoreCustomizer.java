@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.spring.start.site.extension.dependency.taotaocloud.web;
+package io.spring.start.site.extension.dependency.taotaocloud;
 
 import io.spring.initializr.generator.spring.scm.git.GitIgnore;
 import io.spring.initializr.generator.spring.scm.git.GitIgnoreCustomizer;
@@ -25,7 +25,7 @@ import io.spring.initializr.generator.spring.scm.git.GitIgnoreCustomizer;
  * @version 2022.09
  * @since 2023-12-13 21:53
  */
-public class WebGitIgnoreCustomizer implements GitIgnoreCustomizer {
+public class TaoTaoCloudGitIgnoreCustomizer implements GitIgnoreCustomizer {
     @Override
     public void customize(GitIgnore gitIgnore) {
         gitIgnore.getGeneral().add("**/target");

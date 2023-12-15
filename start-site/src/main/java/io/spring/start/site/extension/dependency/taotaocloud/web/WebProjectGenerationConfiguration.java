@@ -1,4 +1,4 @@
-package io.spring.start.site.extension.dependency.taotaocloud;
+package io.spring.start.site.extension.dependency.taotaocloud.web;
 
 import io.spring.initializr.generator.condition.ConditionalOnRequestedDependency;
 import io.spring.initializr.generator.io.IndentingWriterFactory;
@@ -9,25 +9,30 @@ import io.spring.initializr.generator.project.ProjectGenerationConfiguration;
 import io.spring.initializr.generator.project.contributor.MultipleResourcesProjectContributor;
 import io.spring.initializr.generator.project.contributor.ProjectContributor;
 import io.spring.initializr.metadata.InitializrMetadata;
+import io.spring.start.site.extension.dependency.taotaocloud.TaoTaoCloudBootstrapYmlFileCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.TaoTaoCloudGitIgnoreCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.TaoTaoCloudHelpDocumentCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.condition.ConditionalOnRequestedTaoTaoCloudDependency;
 import io.spring.start.site.extension.dependency.taotaocloud.dingtalk.DingTalkApplicationYmlFileCustomizer;
-import io.spring.start.site.extension.dependency.taotaocloud.web.*;
 import org.springframework.context.annotation.Bean;
 
+//如果系统是gradle构建
+//@ConditionalOnBuildSystem(GradleBuildSystem.ID)
+//打包方式为war
+//@ConditionalOnPackaging(WarPackaging.ID)
 @ProjectGenerationConfiguration
-// 如果系统是gradle构建
-//     @ConditionalOnBuildSystem(GradleBuildSystem.ID)
-// // 打包方式为war
-//     @ConditionalOnPackaging(WarPackaging.ID)
-public class TaotaoCloudProjectGenerationConfiguration {
+@ConditionalOnRequestedTaoTaoCloudDependency(value = "taotao-cloud")
+@ConditionalOnRequestedDependency(value = "taotao-cloud-start-web")
+public class WebProjectGenerationConfiguration {
     private final InitializrMetadata initializrMetadata;
     private final ProjectDescription projectDescription;
     private final IndentingWriterFactory indentingWriterFactory;
     private final TemplateRenderer templateRenderer;
 
-    public TaotaoCloudProjectGenerationConfiguration(InitializrMetadata metadata,
-                                                     ProjectDescription description,
-                                                     IndentingWriterFactory indentingWriterFactory,
-                                                     TemplateRenderer templateRenderer) {
+    public WebProjectGenerationConfiguration(InitializrMetadata metadata,
+                                             ProjectDescription description,
+                                             IndentingWriterFactory indentingWriterFactory,
+                                             TemplateRenderer templateRenderer) {
         this.initializrMetadata = metadata;
         this.projectDescription = description;
         this.indentingWriterFactory = indentingWriterFactory;
@@ -37,8 +42,6 @@ public class TaotaoCloudProjectGenerationConfiguration {
 
     /**
      * 添加controller service mapper
-     *
-     * @return
      */
     @Bean
     //@ConditionalOnRequestedDependency("taotao-cloud-starter-web")
@@ -46,24 +49,11 @@ public class TaotaoCloudProjectGenerationConfiguration {
         return new WebProjectContributor(description, templateRenderer);
     }
 
-    // 添加README.md
-    @Bean
-    public ProjectContributor readmeProjectContributor() {
-        return new MultipleResourcesProjectContributor("contributor/readme");
-    }
-
     // 添加application.yml配置文件
     @Bean
     public WebApplicationYmlFileCustomizer webApplicationYmlFileCustomizer() {
         return new WebApplicationYmlFileCustomizer();
     }
-
-    // 添加bootstrap.yml配置文件
-    @Bean
-    public WebBootstrapYmlFileCustomizer webBootstrapYmlFileCustomizer() {
-        return new WebBootstrapYmlFileCustomizer();
-    }
-
 
     // 添加application.properties文件
     @Bean
@@ -77,21 +67,11 @@ public class TaotaoCloudProjectGenerationConfiguration {
         return new WebMainApplicationTypeCustomizer(description, templateRenderer);
     }
 
-    //添加ignore
-    @Bean
-    public WebGitIgnoreCustomizer webGitIgnoreCustomizer(){
-        return new WebGitIgnoreCustomizer();
-    }
-
-    //添加帮助文档
-    @Bean
-    public WebHelpDocumentCustomizer webHelpDocumentCustomizer(MustacheTemplateRenderer templateRenderer){
-        return new WebHelpDocumentCustomizer(templateRenderer);
-    }
-
     @ConditionalOnRequestedDependency("taotao-cloud-starter-dingtalk")
     @Bean
     public DingTalkApplicationYmlFileCustomizer dingTalkApplicationYmlFileCustomizer(){
         return new DingTalkApplicationYmlFileCustomizer();
     }
 }
+
+

@@ -12,6 +12,7 @@ public class WebApplicationPropertiesContributor extends ApplicationPropertiesCo
         super.contribute(projectRoot);
 
         Path output = projectRoot.resolve("src/main/resources/application.properties");
+
         Files.writeString(output, "taotao.cloud.web.enabled: true");
     }
 

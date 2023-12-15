@@ -1,4 +1,4 @@
-package io.spring.start.site.extension.dependency.taotaocloud.web;
+package io.spring.start.site.extension.dependency.taotaocloud;
 
 import io.spring.start.site.extension.dependency.taotaocloud.bootstrap.BootstrapYmlFile;
 import io.spring.start.site.extension.dependency.taotaocloud.bootstrap.BootstrapYmlFileCustomizer;
@@ -7,7 +7,7 @@ import io.spring.start.site.extension.dependency.taotaocloud.bootstrap.Bootstrap
 import java.util.LinkedList;
 import java.util.List;
 
-public class WebBootstrapYmlFileCustomizer implements BootstrapYmlFileCustomizer {
+public class TaoTaoCloudBootstrapYmlFileCustomizer implements BootstrapYmlFileCustomizer {
     @Override
     public void customize(BootstrapYmlFile bootstrapYmlFile) {
         BootstrapYmlServiceContainer applicationYmlServiceContainer = bootstrapYmlFile.getApplicationYmlServiceContainer();

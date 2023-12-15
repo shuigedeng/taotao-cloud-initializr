@@ -12,8 +12,6 @@ public class WebApplicationYmlFileCustomizer implements ApplicationYmlFileCustom
     public void customize(ApplicationYmlFile applicationYmlFile) {
         ApplicationYmlServiceContainer applicationYmlServiceContainer = applicationYmlFile.getApplicationYmlServiceContainer();
         List<String> data = new LinkedList<>();
-        data.add("taotao:");
-        data.add("  cloud:");
         data.add("    web:");
         data.add("      request:");
         data.add("        enabled: true");
@@ -45,6 +43,6 @@ public class WebApplicationYmlFileCustomizer implements ApplicationYmlFileCustom
 
     @Override
     public int getOrder() {
-        return ApplicationYmlFileCustomizer.super.getOrder();
+        return 1;
     }
 }

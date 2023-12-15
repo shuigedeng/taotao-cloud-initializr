@@ -39,4 +39,6 @@ io.spring.start.site.extension.description.DescriptionProjectGenerationConfigura
 io.spring.start.site.extension.code.kotlin.KotlinProjectGenerationConfiguration,\
 io.spring.start.site.extension.dependency.taotaocloud.application.ApplicationYmlProjectGenerationConfiguration,\
 io.spring.start.site.extension.dependency.taotaocloud.bootstrap.BootstrapYmlProjectGenerationConfiguration,\
-io.spring.start.site.extension.dependency.taotaocloud.TaotaoCloudProjectGenerationConfiguration
+io.spring.start.site.extension.dependency.taotaocloud.TaoTaoCloudProjectGenerationConfiguration,\
+io.spring.start.site.extension.dependency.taotaocloud.web.WebProjectGenerationConfiguration,\
+io.spring.start.site.extension.dependency.taotaocloud.dingtalk.DingTalkProjectGenerationConfiguration

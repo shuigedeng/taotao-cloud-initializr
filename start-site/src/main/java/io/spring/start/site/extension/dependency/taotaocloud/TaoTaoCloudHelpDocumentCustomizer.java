@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.spring.start.site.extension.dependency.taotaocloud.web;
+package io.spring.start.site.extension.dependency.taotaocloud;
 
 import io.spring.initializr.generator.io.template.MustacheTemplateRenderer;
 import io.spring.initializr.generator.io.text.MustacheSection;
@@ -29,12 +29,14 @@ import java.util.Collections;
  * @version 2022.09
  * @since 2023-12-13 21:54
  */
-public class WebHelpDocumentCustomizer implements HelpDocumentCustomizer {
+public class TaoTaoCloudHelpDocumentCustomizer implements HelpDocumentCustomizer {
     private final MustacheTemplateRenderer templateRenderer;
 
-    public WebHelpDocumentCustomizer(MustacheTemplateRenderer templateRenderer) {
+    public TaoTaoCloudHelpDocumentCustomizer(MustacheTemplateRenderer templateRenderer) {
         this.templateRenderer = templateRenderer;
     }
+
+
     @Override
     public void customize(HelpDocument document) {
         document.addSection(new MustacheSection(this.templateRenderer, "taotao-cloud-help", Collections.emptyMap()));

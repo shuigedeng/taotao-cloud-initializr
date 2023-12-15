@@ -16,7 +16,7 @@ public class OnRequestedTaoTaoCloudDependencyCondition extends ProjectGeneration
 			.get("value");
 		Set<String> keySet = description.getRequestedDependencies().keySet();
 		for (String key : keySet) {
-			if(key.contains("taotao-cloud")){
+			if(key.contains(id)){
 				return true;
 			}
 		}
