@@ -22,7 +22,7 @@ import org.springframework.context.annotation.Bean;
 //@ConditionalOnPackaging(WarPackaging.ID)
 @ProjectGenerationConfiguration
 @ConditionalOnRequestedTaoTaoCloudDependency(value = "taotao-cloud")
-@ConditionalOnRequestedDependency(value = "taotao-cloud-start-web")
+@ConditionalOnRequestedDependency(value = "taotao-cloud-starter-web")
 public class WebProjectGenerationConfiguration {
     private final InitializrMetadata initializrMetadata;
     private final ProjectDescription projectDescription;
