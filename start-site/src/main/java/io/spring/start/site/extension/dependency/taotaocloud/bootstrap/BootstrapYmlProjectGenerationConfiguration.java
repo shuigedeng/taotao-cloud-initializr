@@ -17,29 +17,33 @@
 package io.spring.start.site.extension.dependency.taotaocloud.bootstrap;
 
 import io.spring.initializr.generator.io.IndentingWriterFactory;
+import io.spring.initializr.generator.project.ProjectGenerationConfiguration;
+import io.spring.start.site.extension.dependency.taotaocloud.bootstrap.dev.BootstrapDevYmlFileCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.bootstrap.local.BootstrapLocalYmlFileCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.bootstrap.pre.BootstrapPreYmlFileCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.bootstrap.pro.BootstrapProYmlFileCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.bootstrap.sit.BootstrapSitYmlFileCustomizer;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * Configuration for generation of projects that depend on Docker Compose.
  *
  * @author Moritz Halbritter
  */
-@Configuration(proxyBeanMethods = false)
+@ProjectGenerationConfiguration(proxyBeanMethods = false)
 class BootstrapYmlProjectGenerationConfiguration {
 
     @Bean
-    BootstrapYmlFile bootstrapYmlFile(ObjectProvider<BootstrapYmlFileCustomizer> applicationYmlFileCustomizers) {
-        BootstrapYmlFile bootstrapYmlFile = new BootstrapYmlFile();
-        applicationYmlFileCustomizers.orderedStream().forEach((customizer) -> customizer.customize(bootstrapYmlFile));
-        return bootstrapYmlFile;
-    }
-
-    @Bean
-    BootstrapYmlContributor bootstrapYmlContributor(IndentingWriterFactory indentingWriterFactory,
-                                                            BootstrapYmlFile bootstrapYmlFile) {
-        return new BootstrapYmlContributor(indentingWriterFactory, bootstrapYmlFile);
+    BootstrapYmlFileEnvContainer bootstrapYmlFileEnvContainer(ObjectProvider<BootstrapYmlFileCustomizer> bootstrapYmlFileCustomizers,
+                                                              ObjectProvider<BootstrapDevYmlFileCustomizer> bootstrapDevYmlFileCustomizers,
+                                                              ObjectProvider<BootstrapLocalYmlFileCustomizer> bootstrapLocalYmlFileCustomizers,
+                                                              ObjectProvider<BootstrapPreYmlFileCustomizer> bootstrapPreYmlFileCustomizers,
+                                                              ObjectProvider<BootstrapProYmlFileCustomizer> bootstrapProYmlFileCustomizers,
+                                                              ObjectProvider<BootstrapSitYmlFileCustomizer> bootstrapSitYmlFileCustomizers,
+                                                              IndentingWriterFactory indentingWriterFactory) {
+        return new BootstrapYmlFileEnvContainer(bootstrapYmlFileCustomizers, bootstrapDevYmlFileCustomizers, bootstrapLocalYmlFileCustomizers,
+                bootstrapPreYmlFileCustomizers, bootstrapProYmlFileCustomizers, bootstrapSitYmlFileCustomizers, indentingWriterFactory);
     }
 
 }

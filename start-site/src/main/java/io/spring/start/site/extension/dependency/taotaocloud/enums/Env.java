@@ -13,21 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.spring.start.site.extension.dependency.taotaocloud.customizer;
+package io.spring.start.site.extension.dependency.taotaocloud.enums;
 
-import io.spring.initializr.metadata.InitializrMetadata;
-import io.spring.initializr.metadata.InitializrMetadataCustomizer;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
- * 自定义项目初始化配置元数据；这个 Customizer 比较特殊，框架会在首次加载元数据配置时调用。
+ * Env
  *
  * @author shuigedeng
  * @version 2022.09
- * @since 2023-12-13 21:55
+ * @since 2023-12-16 09:17
  */
-public class CustomInitializrMetadataCustomizer implements InitializrMetadataCustomizer {
-    @Override
-    public void customize(InitializrMetadata metadata) {
+public enum Env {
+    none,
+    dev,
+    local,
+    pre,
+    pro,
+    sit;
 
+
+    public static List<String> nameList() {
+        return Arrays.stream(Env.values()).map(e -> e.name()).collect(Collectors.toList());
     }
+
 }

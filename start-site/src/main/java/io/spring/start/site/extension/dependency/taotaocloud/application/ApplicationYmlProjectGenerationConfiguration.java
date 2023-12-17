@@ -17,6 +17,12 @@
 package io.spring.start.site.extension.dependency.taotaocloud.application;
 
 import io.spring.initializr.generator.io.IndentingWriterFactory;
+import io.spring.initializr.generator.project.ProjectGenerationConfiguration;
+import io.spring.start.site.extension.dependency.taotaocloud.application.dev.ApplicationDevYmlFileCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.application.local.ApplicationLocalYmlFileCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.application.pre.ApplicationPreYmlFileCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.application.pro.ApplicationProYmlFileCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.application.sit.ApplicationSitYmlFileCustomizer;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,20 +32,23 @@ import org.springframework.context.annotation.Configuration;
  *
  * @author Moritz Halbritter
  */
-@Configuration(proxyBeanMethods = false)
+@ProjectGenerationConfiguration(proxyBeanMethods = false)
 class ApplicationYmlProjectGenerationConfiguration {
 
     @Bean
-    ApplicationYmlFile applicationYmlFile(ObjectProvider<ApplicationYmlFileCustomizer> applicationYmlFileCustomizers) {
-        ApplicationYmlFile applicationYmlFile = new ApplicationYmlFile();
-        applicationYmlFileCustomizers.orderedStream().forEach((customizer) -> customizer.customize(applicationYmlFile));
-        return applicationYmlFile;
+    public ApplicationYmlFileEnvContainer applicationYmlFileEnvContainer(ObjectProvider<ApplicationYmlFileCustomizer> applicationYmlFileCustomizers,
+                                                                         ObjectProvider<ApplicationDevYmlFileCustomizer> applicationDevYmlFileCustomizers,
+                                                                         ObjectProvider<ApplicationLocalYmlFileCustomizer> applicationLocalYmlFileCustomizers,
+                                                                         ObjectProvider<ApplicationPreYmlFileCustomizer> applicationPreYmlFileCustomizers,
+                                                                         ObjectProvider<ApplicationProYmlFileCustomizer> applicationProYmlFileCustomizers,
+                                                                         ObjectProvider<ApplicationSitYmlFileCustomizer> applicationSitYmlFileCustomizers,
+                                                                         IndentingWriterFactory indentingWriterFactory) {
+        return new ApplicationYmlFileEnvContainer(applicationYmlFileCustomizers,
+                applicationDevYmlFileCustomizers,
+                applicationLocalYmlFileCustomizers,
+                applicationPreYmlFileCustomizers,
+                applicationProYmlFileCustomizers,
+                applicationSitYmlFileCustomizers,
+                indentingWriterFactory);
     }
-
-    @Bean
-    ApplicationYmlContributor applicationYmlContributor(IndentingWriterFactory indentingWriterFactory,
-                                                              ApplicationYmlFile applicationYmlFile) {
-        return new ApplicationYmlContributor(indentingWriterFactory, applicationYmlFile);
-    }
-
 }

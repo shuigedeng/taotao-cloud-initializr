@@ -54,6 +54,11 @@ public class WebProjectGenerationConfiguration {
     public WebApplicationYmlFileCustomizer webApplicationYmlFileCustomizer() {
         return new WebApplicationYmlFileCustomizer();
     }
+    // 添加application-dev.yml配置文件
+    @Bean
+    public WebApplicationDevYmlFileCustomizer webApplicationDevYmlFileCustomizer() {
+        return new WebApplicationDevYmlFileCustomizer();
+    }
 
     // 添加application.properties文件
     @Bean

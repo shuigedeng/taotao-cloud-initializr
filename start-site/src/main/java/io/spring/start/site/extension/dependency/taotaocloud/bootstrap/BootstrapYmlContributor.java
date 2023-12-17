@@ -3,6 +3,8 @@ package io.spring.start.site.extension.dependency.taotaocloud.bootstrap;
 import io.spring.initializr.generator.io.IndentingWriter;
 import io.spring.initializr.generator.io.IndentingWriterFactory;
 import io.spring.initializr.generator.project.contributor.SingleResourceProjectContributor;
+import io.spring.start.site.extension.dependency.taotaocloud.application.ApplicationYmlFile;
+import io.spring.start.site.extension.dependency.taotaocloud.application.ApplicationYmlFileWriter;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -14,23 +16,30 @@ public class BootstrapYmlContributor extends SingleResourceProjectContributor {
     private final BootstrapYmlFile bootstrapYmlFile;
     private final IndentingWriterFactory indentingWriterFactory;
     private final BootstrapYmlFileWriter bootstrapYmlFileWriter;
+    private final String relativePath;
 
-    public BootstrapYmlContributor(IndentingWriterFactory indentingWriterFactory, BootstrapYmlFile bootstrapYmlFile) {
-        this("classpath:configuration/bootstrap.yml", bootstrapYmlFile, indentingWriterFactory);
+    public BootstrapYmlContributor(String relativePath,
+                                     IndentingWriterFactory indentingWriterFactory,
+                                   BootstrapYmlFile bootstrapYmlFile) {
+        this(relativePath, relativePath, bootstrapYmlFile, indentingWriterFactory);
     }
 
-    public BootstrapYmlContributor(String resourcePattern, BootstrapYmlFile bootstrapYmlFile, IndentingWriterFactory indentingWriterFactory) {
-        super("src/main/resources/application.yml", resourcePattern);
+    public BootstrapYmlContributor(String relativePath,
+                                     String resourcePattern,
+                                   BootstrapYmlFile bootstrapYmlFile,
+                                     IndentingWriterFactory indentingWriterFactory) {
+        super(relativePath, resourcePattern);
+        this.relativePath = relativePath;
         this.bootstrapYmlFile = bootstrapYmlFile;
         this.indentingWriterFactory = indentingWriterFactory;
-        bootstrapYmlFileWriter = new BootstrapYmlFileWriter();
+        this.bootstrapYmlFileWriter = new BootstrapYmlFileWriter();
     }
 
     @Override
     public void contribute(Path projectRoot) throws IOException {
         super.contribute(projectRoot);
 
-        Path output = projectRoot.resolve("src/main/resources/bootstrap.yml");
+        Path output = projectRoot.resolve(relativePath);
         writeComposeFile(Files.newBufferedWriter(output));
     }
 

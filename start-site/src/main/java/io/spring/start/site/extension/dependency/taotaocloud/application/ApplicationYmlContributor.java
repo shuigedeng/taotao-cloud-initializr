@@ -14,23 +14,30 @@ public class ApplicationYmlContributor extends SingleResourceProjectContributor 
     private final ApplicationYmlFile applicationYmlFile;
     private final IndentingWriterFactory indentingWriterFactory;
     private final ApplicationYmlFileWriter applicationYmlFileWriter;
+    private final String relativePath;
 
-    public ApplicationYmlContributor(IndentingWriterFactory indentingWriterFactory, ApplicationYmlFile applicationYmlFile) {
-        this("classpath:configuration/application.yml", applicationYmlFile, indentingWriterFactory);
+    public ApplicationYmlContributor(String relativePath,
+                                     IndentingWriterFactory indentingWriterFactory,
+                                     ApplicationYmlFile applicationYmlFile) {
+        this(relativePath, relativePath, applicationYmlFile, indentingWriterFactory);
     }
 
-    public ApplicationYmlContributor(String resourcePattern, ApplicationYmlFile applicationYmlFile, IndentingWriterFactory indentingWriterFactory) {
-        super("src/main/resources/application.yml", resourcePattern);
+    public ApplicationYmlContributor(String relativePath,
+                                     String resourcePattern,
+                                     ApplicationYmlFile applicationYmlFile,
+                                     IndentingWriterFactory indentingWriterFactory) {
+        super(relativePath, resourcePattern);
+        this.relativePath = relativePath;
         this.applicationYmlFile = applicationYmlFile;
         this.indentingWriterFactory = indentingWriterFactory;
-        applicationYmlFileWriter = new ApplicationYmlFileWriter();
+        this.applicationYmlFileWriter = new ApplicationYmlFileWriter();
     }
 
     @Override
     public void contribute(Path projectRoot) throws IOException {
         super.contribute(projectRoot);
 
-        Path output = projectRoot.resolve("src/main/resources/application.yml");
+        Path output = projectRoot.resolve(relativePath);
         writeComposeFile(Files.newBufferedWriter(output));
     }
 
