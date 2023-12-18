@@ -1,15 +1,15 @@
 package io.spring.start.site.extension.dependency.taotaocloud.dingtalk;
 
-import io.spring.start.site.extension.dependency.taotaocloud.common.yml.application.ApplicationYmlFile;
-import io.spring.start.site.extension.dependency.taotaocloud.common.yml.application.ApplicationYmlFileCustomizer;
-import io.spring.start.site.extension.dependency.taotaocloud.common.yml.application.ApplicationYmlServiceContainer;
+import io.spring.start.site.extension.dependency.taotaocloud.configuration.application.ApplicationConfigurationYmlFile;
+import io.spring.start.site.extension.dependency.taotaocloud.configuration.application.ApplicationYmlFileCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.configuration.application.ApplicationYmlServiceContainer;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class DingTalkApplicationYmlFileCustomizer implements ApplicationYmlFileCustomizer {
     @Override
-    public void customize(ApplicationYmlFile applicationYmlFile) {
+    public void customize(ApplicationConfigurationYmlFile applicationYmlFile) {
         ApplicationYmlServiceContainer applicationYmlServiceContainer = applicationYmlFile.getApplicationYmlServiceContainer();
         List<String> data = new LinkedList<>();
         data.add("    ding-talk:");

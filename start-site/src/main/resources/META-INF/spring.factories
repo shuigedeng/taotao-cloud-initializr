@@ -37,8 +37,8 @@ io.spring.start.site.extension.dependency.vaadin.VaadinProjectGenerationConfigur
 io.spring.start.site.extension.dependency.zipkin.ZipkinProjectGenerationConfiguration,\
 io.spring.start.site.extension.description.DescriptionProjectGenerationConfiguration,\
 io.spring.start.site.extension.code.kotlin.KotlinProjectGenerationConfiguration,\
-io.spring.start.site.extension.dependency.taotaocloud.application.ApplicationYmlProjectGenerationConfiguration,\
-io.spring.start.site.extension.dependency.taotaocloud.bootstrap.BootstrapYmlProjectGenerationConfiguration,\
+io.spring.start.site.extension.dependency.taotaocloud.configuration.application.ApplicationYmlProjectGenerationConfiguration,\
+io.spring.start.site.extension.dependency.taotaocloud.configuration.bootstrap.BootstrapYmlProjectGenerationConfiguration,\
 io.spring.start.site.extension.dependency.taotaocloud.TaoTaoCloudProjectGenerationConfiguration,\
 io.spring.start.site.extension.dependency.taotaocloud.web.WebProjectGenerationConfiguration,\
 io.spring.start.site.extension.dependency.taotaocloud.dingtalk.DingTalkProjectGenerationConfiguration
