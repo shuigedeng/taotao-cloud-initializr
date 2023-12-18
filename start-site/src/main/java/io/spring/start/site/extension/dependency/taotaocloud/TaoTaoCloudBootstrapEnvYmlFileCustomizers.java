@@ -1,13 +1,12 @@
 package io.spring.start.site.extension.dependency.taotaocloud;
 
-import io.spring.start.site.extension.dependency.taotaocloud.bootstrap.BootstrapYmlFile;
-import io.spring.start.site.extension.dependency.taotaocloud.bootstrap.BootstrapYmlFileCustomizer;
-import io.spring.start.site.extension.dependency.taotaocloud.bootstrap.dev.BootstrapDevYmlFileCustomizer;
-import io.spring.start.site.extension.dependency.taotaocloud.bootstrap.local.BootstrapLocalYmlFileCustomizer;
-import io.spring.start.site.extension.dependency.taotaocloud.bootstrap.pre.BootstrapPreYmlFileCustomizer;
-import io.spring.start.site.extension.dependency.taotaocloud.bootstrap.pro.BootstrapProYmlFileCustomizer;
-import io.spring.start.site.extension.dependency.taotaocloud.bootstrap.sit.BootstrapSitYmlFileCustomizer;
-import io.spring.start.site.extension.dependency.taotaocloud.utils.YmlDataUtils;
+import io.spring.start.site.extension.dependency.taotaocloud.common.yml.bootstrap.BootstrapYmlFile;
+import io.spring.start.site.extension.dependency.taotaocloud.common.yml.bootstrap.dev.BootstrapDevYmlFileCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.common.yml.bootstrap.local.BootstrapLocalYmlFileCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.common.yml.bootstrap.pre.BootstrapPreYmlFileCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.common.yml.bootstrap.pro.BootstrapProYmlFileCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.common.yml.bootstrap.sit.BootstrapSitYmlFileCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.common.utils.YmlDataUtils;
 
 
 public class TaoTaoCloudBootstrapEnvYmlFileCustomizers {

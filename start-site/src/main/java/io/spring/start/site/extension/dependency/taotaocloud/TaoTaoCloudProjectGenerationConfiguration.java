@@ -9,10 +9,8 @@ import io.spring.initializr.generator.io.template.TemplateRenderer;
 import io.spring.initializr.generator.project.ProjectDescription;
 import io.spring.initializr.generator.project.ProjectGenerationConfiguration;
 import io.spring.initializr.metadata.InitializrMetadata;
-import io.spring.start.site.extension.dependency.taotaocloud.condition.ConditionalOnRequestedTaoTaoCloudDependency;
+import io.spring.start.site.extension.dependency.taotaocloud.common.condition.ConditionalOnRequestedTaoTaoCloudDependency;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 //如果系统是gradle构建
 //@ConditionalOnBuildSystem(GradleBuildSystem.ID)

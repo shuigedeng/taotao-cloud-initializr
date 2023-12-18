@@ -1,9 +1,9 @@
 package io.spring.start.site.extension.dependency.taotaocloud;
 
-import io.spring.start.site.extension.dependency.taotaocloud.application.ApplicationYmlFile;
-import io.spring.start.site.extension.dependency.taotaocloud.application.ApplicationYmlFileCustomizer;
-import io.spring.start.site.extension.dependency.taotaocloud.application.ApplicationYmlServiceContainer;
-import io.spring.start.site.extension.dependency.taotaocloud.utils.YmlDataUtils;
+import io.spring.start.site.extension.dependency.taotaocloud.common.yml.application.ApplicationYmlFile;
+import io.spring.start.site.extension.dependency.taotaocloud.common.yml.application.ApplicationYmlFileCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.common.yml.application.ApplicationYmlServiceContainer;
+import io.spring.start.site.extension.dependency.taotaocloud.common.utils.YmlDataUtils;
 
 public class TaoTaoCloudApplicationYmlFileCustomizer implements ApplicationYmlFileCustomizer {
 

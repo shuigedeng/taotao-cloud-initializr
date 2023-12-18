@@ -1,8 +1,8 @@
 package io.spring.start.site.extension.dependency.taotaocloud.dingtalk;
 
-import io.spring.start.site.extension.dependency.taotaocloud.application.ApplicationYmlFile;
-import io.spring.start.site.extension.dependency.taotaocloud.application.ApplicationYmlFileCustomizer;
-import io.spring.start.site.extension.dependency.taotaocloud.application.ApplicationYmlServiceContainer;
+import io.spring.start.site.extension.dependency.taotaocloud.common.yml.application.ApplicationYmlFile;
+import io.spring.start.site.extension.dependency.taotaocloud.common.yml.application.ApplicationYmlFileCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.common.yml.application.ApplicationYmlServiceContainer;
 
 import java.util.LinkedList;
 import java.util.List;

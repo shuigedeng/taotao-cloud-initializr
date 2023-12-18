@@ -6,11 +6,7 @@ import io.spring.initializr.generator.io.template.TemplateRenderer;
 import io.spring.initializr.generator.project.ProjectDescription;
 import io.spring.initializr.generator.project.ProjectGenerationConfiguration;
 import io.spring.initializr.metadata.InitializrMetadata;
-import io.spring.start.site.extension.dependency.taotaocloud.condition.ConditionalOnRequestedTaoTaoCloudDependency;
-import io.spring.start.site.extension.dependency.taotaocloud.web.WebApplicationPropertiesContributor;
-import io.spring.start.site.extension.dependency.taotaocloud.web.WebApplicationYmlFileCustomizer;
-import io.spring.start.site.extension.dependency.taotaocloud.web.WebMainApplicationTypeCustomizer;
-import io.spring.start.site.extension.dependency.taotaocloud.web.WebProjectContributor;
+import io.spring.start.site.extension.dependency.taotaocloud.common.condition.ConditionalOnRequestedTaoTaoCloudDependency;
 import org.springframework.context.annotation.Bean;
 
 @ProjectGenerationConfiguration

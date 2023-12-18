@@ -2,18 +2,11 @@ package io.spring.start.site.extension.dependency.taotaocloud.web;
 
 import io.spring.initializr.generator.condition.ConditionalOnRequestedDependency;
 import io.spring.initializr.generator.io.IndentingWriterFactory;
-import io.spring.initializr.generator.io.template.MustacheTemplateRenderer;
 import io.spring.initializr.generator.io.template.TemplateRenderer;
 import io.spring.initializr.generator.project.ProjectDescription;
 import io.spring.initializr.generator.project.ProjectGenerationConfiguration;
-import io.spring.initializr.generator.project.contributor.MultipleResourcesProjectContributor;
-import io.spring.initializr.generator.project.contributor.ProjectContributor;
 import io.spring.initializr.metadata.InitializrMetadata;
-import io.spring.start.site.extension.dependency.taotaocloud.TaoTaoCloudBootstrapYmlFileCustomizer;
-import io.spring.start.site.extension.dependency.taotaocloud.TaoTaoCloudGitIgnoreCustomizer;
-import io.spring.start.site.extension.dependency.taotaocloud.TaoTaoCloudHelpDocumentCustomizer;
-import io.spring.start.site.extension.dependency.taotaocloud.condition.ConditionalOnRequestedTaoTaoCloudDependency;
-import io.spring.start.site.extension.dependency.taotaocloud.dingtalk.DingTalkApplicationYmlFileCustomizer;
+import io.spring.start.site.extension.dependency.taotaocloud.common.condition.ConditionalOnRequestedTaoTaoCloudDependency;
 import org.springframework.context.annotation.Bean;
 
 //如果系统是gradle构建
