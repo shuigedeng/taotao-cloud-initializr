@@ -29,11 +29,13 @@ import io.spring.initializr.generator.spring.code.ServletInitializerCustomizer;
 public class TaoTaoCloudServletInitializerCustomizer implements ServletInitializerCustomizer<JavaTypeDeclaration> {
     @Override
     public void customize(JavaTypeDeclaration typeDeclaration) {
-        JavaFieldDeclaration javaFieldDeclaration =  JavaFieldDeclaration.field("xx")
-                .value("")
+        JavaFieldDeclaration javaFieldDeclaration =  JavaFieldDeclaration.field("TaoTaoCloudServletInitializerCustomizer")
+                .value("TaoTaoCloudServletInitializerCustomizerValue")
                 .modifiers(1)
                         .returning("String");
 
         typeDeclaration.addFieldDeclaration(javaFieldDeclaration);
+
+
     }
 }
