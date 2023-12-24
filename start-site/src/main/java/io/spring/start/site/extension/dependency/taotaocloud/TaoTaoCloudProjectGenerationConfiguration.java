@@ -35,39 +35,39 @@ public class TaoTaoCloudProjectGenerationConfiguration {
     }
 
     // 添加bootstrap.yml配置文件
-    @Bean
-    public TaoTaoCloudBootstrapYmlFileCustomizer taoTaoCloudBootstrapYmlFileCustomizer() {
-        return new TaoTaoCloudBootstrapYmlFileCustomizer();
-    }
-    // 添加基础yml
-    @Bean
-    public TaoTaoCloudApplicationYmlFileCustomizer taoTaoCloudApplicationYmlFileCustomizer() {
-        return new TaoTaoCloudApplicationYmlFileCustomizer();
-    }
-    @Bean
-    public TaoTaoCloudApplicationDevYmlFileCustomizer taoTaoCloudApplicationDevYmlFileCustomizer() {
-        return new TaoTaoCloudApplicationDevYmlFileCustomizer();
-    }
-    @Bean
-    public TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapDevYmlFileCustomizer taoTaoCloudBootstrapDevYmlFileCustomizer(){
-        return new TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapDevYmlFileCustomizer();
-    }
-    @Bean
-    public TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapLocalYmlFileCustomizer taoTaoCloudBootstrapLocalYmlFileCustomizer(){
-        return new TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapLocalYmlFileCustomizer();
-    }
-    @Bean
-    public TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapPreYmlFileCustomizer taoTaoCloudBootstrapPreYmlFileCustomizer(){
-        return new TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapPreYmlFileCustomizer();
-    }
-    @Bean
-    public TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapProYmlFileCustomizer taoTaoCloudBootstrapProYmlFileCustomizer(){
-        return new TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapProYmlFileCustomizer();
-    }
-    @Bean
-    public TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapSitYmlFileCustomizer taoTaoCloudBootstrapSitYmlFileCustomizer(){
-        return new TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapSitYmlFileCustomizer();
-    }
+//    @Bean
+//    public TaoTaoCloudBootstrapYmlFileCustomizer taoTaoCloudBootstrapYmlFileCustomizer() {
+//        return new TaoTaoCloudBootstrapYmlFileCustomizer();
+//    }
+//    // 添加基础yml
+//    @Bean
+//    public TaoTaoCloudApplicationYmlFileCustomizer taoTaoCloudApplicationYmlFileCustomizer() {
+//        return new TaoTaoCloudApplicationYmlFileCustomizer();
+//    }
+//    @Bean
+//    public TaoTaoCloudApplicationDevYmlFileCustomizer taoTaoCloudApplicationDevYmlFileCustomizer() {
+//        return new TaoTaoCloudApplicationDevYmlFileCustomizer();
+//    }
+//    @Bean
+//    public TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapDevYmlFileCustomizer taoTaoCloudBootstrapDevYmlFileCustomizer(){
+//        return new TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapDevYmlFileCustomizer();
+//    }
+//    @Bean
+//    public TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapLocalYmlFileCustomizer taoTaoCloudBootstrapLocalYmlFileCustomizer(){
+//        return new TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapLocalYmlFileCustomizer();
+//    }
+//    @Bean
+//    public TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapPreYmlFileCustomizer taoTaoCloudBootstrapPreYmlFileCustomizer(){
+//        return new TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapPreYmlFileCustomizer();
+//    }
+//    @Bean
+//    public TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapProYmlFileCustomizer taoTaoCloudBootstrapProYmlFileCustomizer(){
+//        return new TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapProYmlFileCustomizer();
+//    }
+//    @Bean
+//    public TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapSitYmlFileCustomizer taoTaoCloudBootstrapSitYmlFileCustomizer(){
+//        return new TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapSitYmlFileCustomizer();
+//    }
 
     //**********************************
 

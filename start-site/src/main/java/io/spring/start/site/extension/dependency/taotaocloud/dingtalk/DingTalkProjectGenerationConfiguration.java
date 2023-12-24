@@ -28,9 +28,13 @@ public class DingTalkProjectGenerationConfiguration {
         this.templateRenderer = templateRenderer;
     }
 
+//    @Bean
+//    public DingTalkApplicationYmlFileCustomizer dingTalkApplicationYmlFileCustomizer(){
+//        return new DingTalkApplicationYmlFileCustomizer();
+//    }
     @Bean
-    public DingTalkApplicationYmlFileCustomizer dingTalkApplicationYmlFileCustomizer(){
-        return new DingTalkApplicationYmlFileCustomizer();
+    public DingTalkApplicationDevYmlFileCustomizer dingTalkApplicationDevYmlFileCustomizer(){
+        return new DingTalkApplicationDevYmlFileCustomizer();
     }
 }
 

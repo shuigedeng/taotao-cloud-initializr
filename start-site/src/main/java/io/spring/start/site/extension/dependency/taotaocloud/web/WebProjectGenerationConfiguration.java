@@ -42,12 +42,12 @@ public class WebProjectGenerationConfiguration {
         return new WebProjectContributor(description, templateRenderer);
     }
 
-    // 添加application.yml配置文件
-    @Bean
-    public WebApplicationYmlFileCustomizer webApplicationYmlFileCustomizer() {
-        return new WebApplicationYmlFileCustomizer();
-    }
-    // 添加application-dev.yml配置文件
+//    // 添加application.yml配置文件
+//    @Bean
+//    public WebApplicationYmlFileCustomizer webApplicationYmlFileCustomizer() {
+//        return new WebApplicationYmlFileCustomizer();
+//    }
+//    // 添加application-dev.yml配置文件
     @Bean
     public WebApplicationDevYmlFileCustomizer webApplicationDevYmlFileCustomizer() {
         return new WebApplicationDevYmlFileCustomizer();

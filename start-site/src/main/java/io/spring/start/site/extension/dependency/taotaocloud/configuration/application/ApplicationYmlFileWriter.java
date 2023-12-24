@@ -18,7 +18,14 @@ package io.spring.start.site.extension.dependency.taotaocloud.configuration.appl
 
 import io.spring.initializr.generator.container.docker.compose.ComposeFile;
 import io.spring.initializr.generator.io.IndentingWriter;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 /**
  * A {@link ComposeFile} writer for {@code compose.yaml}.
@@ -27,16 +34,23 @@ import org.springframework.util.CollectionUtils;
  * @author Moritz Halbritter
  */
 public class ApplicationYmlFileWriter {
+    private static final Logger logger = LoggerFactory.getLogger(ApplicationYmlFileWriter.class);
 
     public void writeService(IndentingWriter writer, ApplicationConfigurationYmlFile applicationYmlFile) {
         ApplicationYmlServiceContainer applicationYmlServiceContainer = applicationYmlFile.getApplicationYmlServiceContainer();
-        applicationYmlServiceContainer.getServices().forEach((key, values) -> {
-            if (CollectionUtils.isEmpty(values)) {
-                return;
+        Map<String, List<String>> services = applicationYmlServiceContainer.getServices();
+        if (CollectionUtils.isEmpty(services)) {
+            return;
+        }
+
+        for (Map.Entry<String, List<String>> stringListEntry : services.entrySet()) {
+            List<String> values = stringListEntry.getValue();
+            if (!CollectionUtils.isEmpty(values)) {
+                values.stream()
+                        .filter(StringUtils::isNotBlank)
+                        .forEach(writer::println);
             }
-            for (String value : values) {
-                writer.println(value);
-            }
-        });
+
+        }
     }
 }

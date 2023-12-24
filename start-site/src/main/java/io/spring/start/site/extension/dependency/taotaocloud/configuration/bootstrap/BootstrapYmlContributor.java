@@ -5,9 +5,11 @@ import io.spring.initializr.generator.io.IndentingWriterFactory;
 import io.spring.initializr.generator.project.contributor.SingleResourceProjectContributor;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 
 public class BootstrapYmlContributor extends SingleResourceProjectContributor {
 
@@ -38,7 +40,7 @@ public class BootstrapYmlContributor extends SingleResourceProjectContributor {
         super.contribute(projectRoot);
 
         Path output = projectRoot.resolve(relativePath);
-        writeComposeFile(Files.newBufferedWriter(output));
+        writeComposeFile(Files.newBufferedWriter(output, StandardOpenOption.APPEND));
     }
 
     void writeComposeFile(Writer out) throws IOException {

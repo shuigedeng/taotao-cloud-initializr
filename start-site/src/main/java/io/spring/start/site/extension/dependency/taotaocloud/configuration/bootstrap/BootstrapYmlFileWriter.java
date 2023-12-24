@@ -18,7 +18,12 @@ package io.spring.start.site.extension.dependency.taotaocloud.configuration.boot
 
 import io.spring.initializr.generator.container.docker.compose.ComposeFile;
 import io.spring.initializr.generator.io.IndentingWriter;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;
+
+import java.io.IOException;
 
 /**
  * A {@link ComposeFile} writer for {@code compose.yaml}.
@@ -27,6 +32,7 @@ import org.springframework.util.CollectionUtils;
  * @author Moritz Halbritter
  */
 public class BootstrapYmlFileWriter {
+    private static final Logger logger = LoggerFactory.getLogger(BootstrapYmlFileWriter.class);
 
     public void writeService(IndentingWriter writer, BootstrapConfigurationYmlFile bootstrapYmlFile) {
         BootstrapYmlServiceContainer bootstrapYmlServiceContainer = bootstrapYmlFile.getApplicationYmlServiceContainer();
@@ -34,9 +40,9 @@ public class BootstrapYmlFileWriter {
             if (CollectionUtils.isEmpty(values)) {
                 return;
             }
-            for (String value : values) {
-                writer.println(value);
-            }
+            values.stream()
+                    .filter(StringUtils::isNotBlank)
+                    .forEach(writer::println);
         });
     }
 }

@@ -1,0 +1,688 @@
+server:
+  port: 33337
+  shutdown: graceful
+  http2:
+    enabled: true
+  undertow:
+    buffer-size: 2048 #每块buffer的空间大小,越小的空间被利用越充分，buffer会用于服务器连接的IO操作,类似netty的池化内存管理
+    direct-buffers: true # 是否分配的直接内存
+    #max-http-post-size: -1B # HTTP POST请求最大的大小
+    max-cookies: 200 # 允许的最大 cookie 数量
+    max-headers: 100 # 允许的最大请求头数量
+    threads:
+      io: 16 # 设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程
+      worker: 256 # 阻塞任务线程池, 当执行类似servlet请求阻塞操作, undertow会从这个线程池中取得线程,它的值设置取决于系统的负载
+    accesslog:
+      dir: ${user.home}/logs/${spring.application.name}/undertow # 日志存放目录
+      enabled: true # 是否启动日志
+      pattern: common # 日志格式
+      prefix: "access_log." # 日志文件名前缀
+      suffix: log # 日志文件名后缀
+  servlet:
+    application-display-name: ${spring.application.name}
+    #context-path: sys
+
+spring:
+  threads:
+    virtual:
+      #1.Tomcat将使用虚拟线程来处理HTTP请求。这意味着处理Web请求的应用程序代码（例如控制器中的方法）将在虚拟线程上运行。
+      #2.调用@Async方法时，SpringMVC的异步请求处理和SpringWebFlux的阻塞执行支持现在将利用虚拟线程
+      #3.标记有@Scheduled的方法将在虚拟线程上运行
+      enabled: true
+  config:
+    activate:
+      on-profile: dev
+  #autoconfigure:
+  #  exclude:
+  #    - org.springframework.boot.actuate.autoconfigure.elasticsearch.ElasticSearchReactiveHealthContributorAutoConfiguration
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+  thymeleaf:
+    mode: HTML
+    prefix: classpath:/static/
+    suffix: .html
+    encoding: UTF-8
+    cache: false
+    enabled: true
+  main:
+    allow-circular-references: true
+    allow-bean-definition-overriding: true
+    banner-mode: off
+    register-shutdown-hook: true
+    cloud-platform: kubernetes
+    web-application-type: servlet
+  application:
+    name: taotao-cloud-sys
+    admin:
+      enabled: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  web:
+    resources:
+      # pro环境关闭
+      add-mappings: true
+  mvc:
+    servlet:
+      load-on-startup: 1
+    format:
+      date-time: yyyy-MM-dd HH:mm:ss
+      date: yyyy-MM-dd
+      time: HH:mm:ss
+    dispatch-trace-request: true
+    dispatch-options-request: true
+    log-request-details: true
+    log-resolved-exception: true
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 200MB
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    #url: jdbc:mysql://192.168.10.220:13306/${spring.application.name}?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&allowMultiQueries=true&autoReconnect=true&queryInterceptors=brave.mysql8.TracingQueryInterceptor&exceptionInterceptors=brave.mysql8.TracingExceptionInterceptor
+    #driver-class-name: com.mysql.cj.jdbc.Driver
+    #url: jdbc:p6spy:mysql://192.168.10.220:13306/${spring.application.name}?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&allowMultiQueries=true&autoReconnect=true&rewriteBatchedStatements=true
+    #driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    url: jdbc:mysql://192.168.10.220:3306/${spring.application.name}?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&allowMultiQueries=true&autoReconnect=true&useCursorFetch=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    hikari:
+      auto-commit: true # 从池返回的连接的默认自动提交行为 默认true
+      connection-timeout: 350000 # 客户端等待连接池的最大毫秒数
+      idle-timeout: 180000 # 允许连接在连接池中空闲的最大时间（毫秒）
+      login-timeout: 5
+      validation-timeout: 3000   # 连接测试活动的最大时间量
+      max-lifetime: 1800000  # 池中关闭连接后的最长生命周期
+      read-only: false
+      connection-test-query: SELECT 1
+      maximum-pool-size: 200
+      minimum-idle: 10
+      pool-name: DatebookHikariCP
+      register-mbeans: true
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+    dynamic:
+      enabled: false
+      datasource:
+        master:
+          type: com.zaxxer.hikari.HikariDataSource
+          url: jdbc:p6spy:mysql://${TAOTAO_CLOUD_MYSQL_HOST:192.168.10.220}:${TAOTAO_CLOUD_MYSQL_PORT:3306}/${spring.application.name}?useUnicode=true&rewriteBatchedStatements=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+          username: ${TAOTAO_CLOUD_MYSQL_USERNAME:root}
+          password: ${TAOTAO_CLOUD_MYSQL_PASSWORD:123456}
+          driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+          hikari:
+            is-auto-commit: true
+            connection-timeout: 30000
+            idle-timeout: 25000
+            validation-timeout: 3000
+            max-lifetime: 50000
+            is-read-only: false
+            connection-test-query: SELECT 1
+            max-pool-size: 15
+            min-idle: 10
+  data:
+    redis:
+      host: 192.168.10.220
+      port: 6379
+      database: 1
+      #password: ${TAOTAO_CLOUD_REDIS_PASSWORD:taotao-cloud}
+      connect-timeout: 60000
+      #sentinel:
+      #  master:
+      #  nodes:
+      #cluster:
+      #  nodes: 192.168.10.220:6381,192.168.10.220:6382,192.168.10.220:6383,192.168.10.220:6384,192.168.10.220:6385,192.168.10.220:6386
+      #  max-redirects: 3
+      client-type: lettuce
+      lettuce:
+        pool:
+          max-active: 1500
+          max-wait: 60000
+          max-idle: 500
+          min-idle: 100
+      redisson:
+        config: |
+          singleServerConfig:
+            # 连接空闲超时，单位：毫秒
+            idleConnectionTimeout: 10000
+            # 连接超时，单位：毫秒
+            connectTimeout: 10000
+            # 命令等待超时，单位：毫秒
+            timeout: 3000
+            # 命令失败重试次数,如果尝试达到 retryAttempts（命令失败重试次数） 仍然不能将命令发送至某个指定的节点时，将抛出错误。
+            # 如果尝试在此限制之内发送成功，则开始启用 timeout（命令等待超时） 计时。
+            retryAttempts: 3
+            # 命令重试发送时间间隔，单位：毫秒
+            retryInterval: 1500
+            # 密码，没有设置密码时，需要注释掉，否则会报错
+            password: taotao-cloud
+            # 单个连接最大订阅数量
+            subscriptionsPerConnection: 5
+            # 客户端名称
+            clientName: "taotao-cloud-redis-client"
+            # 节点地址
+            address: "redis://192.168.10.220:6379"
+            # 发布和订阅连接的最小空闲连接数
+            subscriptionConnectionMinimumIdleSize: 1
+            # 发布和订阅连接池大小
+            subscriptionConnectionPoolSize: 50
+            # 最小空闲连接数
+            connectionMinimumIdleSize: 32
+            # 连接池大小
+            connectionPoolSize: 64
+            # 数据库编号
+            database: 1
+            # DNS监测时间间隔，单位：毫秒
+            dnsMonitoringInterval: 5000
+          # 线程池数量,默认值: 当前处理核数量 * 2
+          threads: 0
+          # Netty线程池数量,默认值: 当前处理核数量 * 2
+          nettyThreads: 0
+          # 编码
+          codec: !<org.redisson.codec.JsonJacksonCodec> {}
+          # 传输模式
+          transportMode : "NIO"
+          # 配置看门狗的默认超时时间为30s，这里改为 10s
+          lockWatchdogTimeout: 10000
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${herodotus.endpoint.issuer-uri}
+          #jwk-set-uri: ${herodotus.endpoint.jwk-set-uri}
+          jwk-set-uri: http://192.168.10.45:33336/oauth2/jwks
+        opaquetoken:
+          client-id: 25953fda237841689743a94871915661
+          client-secret: a667ed5606f44e159db062239ed5a838
+          introspection-uri: http://192.168.10.220
+  cloud:
+    openfeign:
+      circuitbreaker: #如果 Spring Cloud CircuitBreaker 在 classpath 上，并且feign.circuitbreaker.enabled=true Feign 将使用断路器包装所有方法。
+        enabled: false
+      micrometer: #Feign 指标 MicrometerCapability则会创建并注册一个bean，以便您的 Feign 客户端将指标发布到 Micrometer
+        enabled: true
+      lazy-attributes-resolution: true
+      okhttp:
+        enabled: true
+      httpclient:
+        enabled: false
+        max-connections: 1000
+        max-connections-per-route: 100
+      client:
+        refresh-enabled: false #@RefreshScope支持
+        config:
+          default:
+            connectTimeout: 30000 #防止由于服务器处理时间长而阻塞调用者
+            readTimeout: 30000 #从连接建立时开始应用，在返回响应时间过长时触发。
+          #feignName:
+          #  connectTimeout: 30000
+          #  readTimeout: 30000
+      compression: #Feign 请求/响应压缩
+        request:
+          enabled: true
+          mime-types: text/xml,application/xml,application/json
+          min-request-size: 2048
+        response:
+          enabled: true
+      autoconfiguration: #您可以考虑启用 Jackson Modules 来支持org.springframework.data.domain.Page和org.springframework.data.domain.Sort解码。
+        jackson:
+          enabled: true
+    compatibility-verifier:
+      enabled: false
+    loadbalancer:
+      #nacos:
+      #  enabled: true
+      enabled: true
+    function:
+      # functionName对应服务中的Bean
+      definition: inputKafka1;inputKafka2;inputRabbit1;inputRabbit2;demo;example;test
+  messages:
+    basename: "messages"               # ResourceBundle 名称，多个用，号隔开，默认是 messages
+    #basename: "ballcat-*"               # ResourceBundle 名称，多个用，号隔开，默认是 messages
+    #basename: "messages, validation"
+    fallback-to-system-locale: true     # 当找不到对应区域的语言时，是否回退到系统区域的语言，默认 true
+    encoding: 'utf-8'                    # ResourceBundle 的 charset
+    #cacheDuration: 						# ResourceBundle 加载后的过期时间（s），不设置则不过期，默认不过期
+    alwaysUseMessageFormat: false       # 是否始终应用MessageFormat规则，甚至不带参数地解析消息，默认false
+    useCodeAsDefaultMessage: false  #找不到对应的区域的语言（包括回退）时，直接返回 code 值，否则抛出异常, 默认flase
+
+mybatis-plus:
+  typeAliasesPackage: com.taotao.cloud.sys.biz.model.entity  #实体扫描 多个package用户逗号或者分号分割
+  mapperLocations: classpath:mapper/*.xml # mapper xml 地址
+  global-config:
+    banner: true # 关闭mp3.0自带的banner
+    db-config:
+      id-type: auto #主键类型
+      table-underline: true  #驼峰下划线转换
+      logic-delete-value: 1 #逻辑删除全局值 1已删除
+      logic-not-delete-value: 0 #逻辑未删除全局值 0未删除
+      insert-strategy: not_null  #字段策略
+      update-strategy: not_null  #字段策略
+      where-strategy: not_empty  #字段策略
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 日志打印参数class  org.apache.ibatis.logging.slf4j.Slf4jImpl com.taotao.cloud.data.mybatisplus.log.CustomStdOutImpl
+    lazyLoadingEnabled: true  #查询时，关闭关联对象即时加载以提高性能
+    aggressiveLazyLoading: false  #设置关联对象加载的形态，此处为按需加载字段(加载字段由SQL指定)，不会加载关联表的所有字段，以提高性能
+    multipleResultSetsEnabled: true #对于未知的SQL查询，允许返回不同的结果集以达到通用的效果
+    useColumnLabel: true #允许使用列标签代替列名
+    useGeneratedKeys: true #允许使用自定义的主键值(比如由程序生成的UUID 32位编码作为键值)，数据表的PK生成策略将被覆盖
+    autoMappingBehavior: FULL #给予被嵌套的resultMap以字段-属性的映射支持
+    defaultExecutorType: SIMPLE #对于批量更新操作缓存SQL以提高性能
+    defaultStatementTimeout: 15  #数据库超过15秒仍未响应则超时，部分语句可单独指定超时时间
+    jdbcTypeForNull: NULL
+    callSettersOnNulls: true  #当参数为NULL且字段列可为空的Double等类型时可直接当NULL插入
+    logPrefix: "dao."  #打印sql语句
+  configuration-properties:
+    CONSTANT_CIPHER_TEXT: taotao-cloud
+
+feign:
+  sentinel:
+    enabled: true
+
+management:
+  info:
+    git:
+      mode: simple
+    java:
+      enabled: true
+    env:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+    health:
+      show-details: ALWAYS
+    shutdown:
+      enabled: true
+  health:
+    mail:
+      enabled: false
+    elasticsearch:
+      enabled: true
+    rabbit:
+      enabled: true
+  zipkin:
+    tracing:
+      connect-timeout: 1
+      read-timeout: 10
+      endpoint: http://localhost:9411/api/v2/spans
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
+  observations:
+    http:
+      client:
+        requests:
+          name: taotao-request-name
+      server:
+        requests:
+          name: taotao-server-name
+    key-values:
+      application: ${spring.application.name}
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+  appoptics:
+    metrics:
+      export:
+        batch-size: 500
+
+logging:
+  file:
+    name: ${user.home}/logs/${spring.application.name}/${spring.application.name}.all.log
+    path: ${user.home}/logs/${spring.application.name}/
+  logback:
+    rollingpolicy:
+      max-file-size: 10GB
+      max-history: 30
+      clean-history-on-start: true
+      total-size-cap: 20GB
+  level:
+    root: INFO
+    org.apache.zookeeper.ZooKeeper: info
+    com.taotao.cloud.sys.api.feign: debug
+    net.ttddyy.dsproxy.listener: debug
+    net.ttddyy.dsproxy.listener.logging.SLF4JQueryLoggingListener: debug
+    org.springframework.core.log.LogAccessor: error
+    com.alibaba.nacos.common.utils.LoggerUtils: error
+    org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer: error
+    org.springframework.amqp.rabbit.connection: error
+    org.springframework.cloud.stream.binder.rabbit.provisioning.RabbitExchangeQueueProvisioner: error
+    org.apache.rocketmq.logging.Slf4jLoggerFactory: error
+    org.apache.rocketmq.client.consumer.store: error
+    org.apache.kafka.clients.consumer: error
+    org.apache.kafka.clients.Metadata: error
+    org.apache.kafka.common.utils.AppInfoParser: error
+    # hibernate log org.apache.kafka.clients.consumer
+    #org.hibernate.SQL: debug
+    #org.hibernate.type: info
+    #org.hibernate.type.descriptor.sql.BasicBinder: trace
+    #org.hibernate.type.descriptor.sql.BasicExtractor: debug
+    #org.hibernate.engine.QueryParameters: debug
+    #org.hibernate.engine.query.HQLQueryPlan: debug
+    # mybatis log
+    #com.apache.ibatis: trace
+    #java.sql.Connection: debug
+    #java.sql.Statement: debug
+    #java.sql.PreparedStatement: debug
+    # kafka log
+    #kafka.server.KafkaConfig: info
+    #kafka.admin.AdminClient.AdminConfig: info
+    #org.apache.kafka: off
+    #org.I0Itec.zkclient: info
+    # springframework log
+    #org.springframework.cloud.openfeign: debug
+    #org.springframework.web: off
+    #org.springframework.security: off
+    #org.springframework.security.oauth2: off
+    #org.springframework.boot.autoconfigure: off
+    #org.elasticsearch.client: debug
+
+tlog:
+  pattern: "$preApp:$preIp:$spanId:$traceId"
+  enableInvokeTimePrint: false
+  idGenerator: com.taotao.cloud.logger.tlog.TlogIdGenerator
+  mdcEnable: true
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+springdoc:
+  showActuator: false
+  default-flat-param-object: true
+  packages-to-exclude:
+    - cn.afterturn.easypoi.wps.controller
+    - com.taotao.cloud.captcha.controller
+  #swagger-ui:
+  #  path: /swagger-ui.html
+  #  tags-sorter: alpha
+  #  operations-sorter: alpha
+  #api-docs:
+  #  path: /v3/api-docs
+  #group-configs:
+  #  - group: 'default'
+  #    paths-to-match: '/**'
+  #    packages-to-scan: com.xiaominfo.knife4j.demo.web
+
+knife4j:
+  production: false
+  enable: true
+  basic:
+    enable: false
+    username: admin
+    password: 123456
+  cors: false
+  documents:
+    - group: 1.2.x
+      name: 测试自定义标题分组
+      locations: classpath:md/*
+    - name: 标题2
+      locations: classpath:markdown1/*
+      group: 用户模块
+  setting:
+    swagger-model-name: 实体类列表
+    enableSwaggerModels: true
+    enableDocumentManage: true
+    enableHost: false
+    enableHostText: http://localhost:18568
+    enableRequestCache: true
+    enableFilterMultipartApis: false
+    enableFilterMultipartApiMethodType: POST
+    language: zh-CN
+    enableAfterScript: false
+    enableHomeCustom: true
+    homeCustomLocation: classpath:test/home.md
+    enableFooter: false
+    enableFooterCustom: true
+    footerCustomContent: 八一菜刀研究中心
+    enableSearch: true
+    enableDebug: true
+    enableOpenApi: true
+    enableGroup: true
+
+herodotus:
+  endpoint:
+    uaa-service-name: dante-cloud-uaa
+    upms-service-name: dante-cloud-upms
+    gateway-service-uri: http://127.0.0.1:33336
+    uaa-service-uri: http://127.0.0.1:33336/
+    upms-service-uri: http://127.0.0.1:33336/${herodotus.endpoint.upms-service-name}
+    access-token-uri: http://127.0.0.1:33336/oauth2/token
+    authorization-uri: http://127.0.0.1:33336/oauth2/authorize
+    token-revocation-uri: http://127.0.0.1:33336/oauth2/revoke
+    token-introspection-uri: http://127.0.0.1:33336/oauth2/introspect
+    jwk-set-uri: http://127.0.0.1:33336/oauth2/jwks
+    issuer-uri: ${herodotus.endpoint.uaa-service-uri}
+    oidc-client-registration-uri: http://127.0.0.1:33336/connect/register
+    oidc-user-info-uri: http://127.0.0.1:33336/userinfo
+  oauth2:
+    authentication:
+      form-login:
+        category: HUTOOL_GIF
+    authorization:
+      validate: local
+      jwk:
+        certificate: standard
+
+taotao:
+  cloud:
+    sensitive:
+      enabled: true
+    lock:
+      enabled: true
+      type: redis
+    limit:
+      enabled: true
+    idgenerator:
+      enabled: true
+      type: redis
+    idempotent:
+      enabled: true
+    retry:
+      enabled: true
+    xss:
+      enabled: true
+    sign:
+      enabled: true
+    web:
+      request:
+        enabled: true
+        types:
+          - redis
+          - logger
+          - kafka
+      interceptor:
+        doubt-api: true
+        header: true
+      filter:
+        version: true
+        tenant: true
+        trace: true
+        web-context: true
+        report: true
+        ping: true
+      global-exception:
+        enabled: true
+        types:
+          - DING_TALK
+          - LOGGER
+          - MAIL
+        receive-emails:
+          - 981376577@qq.com
+    alibaba:
+      nacos:
+        enabled: true
+      sentinel:
+        enabled: true
+      seata:
+        enabled: true
+    cache:
+      jetcache:
+        enabled: false
+      caffeine:
+        enabled: false
+      redis:
+        enabled: true
+        cache-manager:
+          enabled: true
+          type: redis
+    data:
+      elasticsearch:
+        enabled: true
+      mybatis-plus:
+        enabled: true
+        dynamic:
+          enabled: false
+        auto-fill:
+          enabled: true
+          enable-insert-fill: true
+          enable-update-fill: true
+        interceptor:
+          enabled: true
+          pagination:
+            db-type: mysql
+            enabled: true
+            max-limit: 1000
+            optimize-join: true
+            overflow: true
+          block-attack:
+            enabled: true
+          illegal-sql:
+            enabled: true
+          optimistic-locker:
+            enabled: true
+          data-scope:
+            enabled: true
+          multi-tenant-line:
+            enabled: true
+          sql-log:
+            enabled: true
+          sql-collector:
+            enabled: true
+          field-encrypt:
+            enabled: true
+          data-operate:
+            enabled: true
+          slow-query:
+            enabled: true
+            slow-sql-threshold-ms: 6000
+          big-result-query:
+            enabled: true
+            size: 1000
+      jpa:
+        enabled: true
+        packages: com.taotao.cloud.sys.biz.model.entity
+        tenant:
+          enabled: false
+      p6spy:
+        enabled: true
+        dateformat: yyyy-MM-dd HH:mm:ss
+        driverlist: com.mysql.cj.jdbc.Driver
+        database-dialect-date-format: yyyy-MM-dd HH:mm:ss
+        appender: com.taotao.cloud.data.p6spy.logger.KafkaLogger
+        logfile: ${user.home}/logs/${spring.application.name}/p6spy/p6spy.log
+        remoteServiceName: p6spy-${spring.application.name}
+    springdoc:
+      enabled: true
+      group: ${spring.applicaion.name}
+      version: ${taotaoCloudVersion}
+      title: 系统管理模块
+    metrics:
+      enabled: true
+      druid:
+        enabled: false
+      sentinel:
+        enabled: true
+      undertow:
+        enabled: true
+    logger:
+      enabled: true
+      logging:
+        console:
+          enabled: true
+        files:
+          enabled: true
+          use-json-format: false
+    laytpl:
+      enabled: true
+    ip2region:
+      enabled: true
+    monitor:
+      enabled: true
+      dump:
+        enabled: true
+      export:
+        enabled: true
+      ping:
+        enabled: true
+      warn:
+        enabled: true
+    feign:
+      enabled: true
+      loadbalancer:
+        enabled: true
+    encrypt:
+      enabled: false
+      filter:
+        enabled: false
+    elk:
+      enabled: false
+    dubbo:
+      enabled: true
+    core:
+      enabled: true
+    captcha:
+      enabled: false
+    mail:
+      enabled: false
+    websocket:
+      enabled: true
+      netty:
+        enabled: true
+    security:
+      oauth2:
+        endpoint:
+          uaa-service-name: dante-cloud-uaa
+          upms-service-name: dante-cloud-upms
+          gateway-service-uri: http://127.0.0.1:33336
+          uaa-service-uri: http://127.0.0.1:33336/
+          upms-service-uri: http://127.0.0.1:33336/${herodotus.endpoint.upms-service-name}
+          access-token-uri: http://127.0.0.1:33336/oauth2/token
+          authorization-uri: http://127.0.0.1:33336/oauth2/authorize
+          token-revocation-uri: http://127.0.0.1:33336/oauth2/revoke
+          token-introspection-uri: http://127.0.0.1:33336/oauth2/introspect
+          jwk-set-uri: http://127.0.0.1:33336/oauth2/jwks
+          issuer-uri: ${herodotus.endpoint.uaa-service-uri}
+          oidc-client-registration-uri: http://127.0.0.1:33336/connect/register
+          oidc-user-info-uri: http://127.0.0.1:33336/userinfo
+          #device-authorization-uri: http://127.0.0.1:33336/oauth2/device_authorization
+          #device-authorization-endpoint: http://127.0.0.1:33336/oauth2/device_authorization
+          #device-verification-uri: http://127.0.0.1:33336/oauth2/device_verification
+          #device-verification-endpoint: http://127.0.0.1:33336/oauth2/device_verification
+        authentication:
+          form-login:
+            category: HUTOOL_GIF
+        authorization:
+          validate: local
+          jwk:
+            certificate: standard
+      ignore-url:
+        - /sys/buyer/dict/test/{code}
+        - /sys/manager/dept/tree

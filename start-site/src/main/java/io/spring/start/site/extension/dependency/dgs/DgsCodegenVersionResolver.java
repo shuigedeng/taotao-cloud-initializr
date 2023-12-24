@@ -32,7 +32,11 @@ abstract class DgsCodegenVersionResolver {
 
 	static String resolve(InitializrMetadata metadata, Version platformVersion, BuildSystem build) {
 		if (GradleBuildSystem.ID.equals(build.id())) {
-			return metadata.getDependencies().get("dgs-codegen").resolve(platformVersion).getVersion();
+			try {
+				return metadata.getDependencies().get("dgs-codegen").resolve(platformVersion).getVersion();
+			} catch (Exception e) {
+				return "1.50";
+			}
 		}
 		else if (MavenBuildSystem.ID.equals(build.id())) {
 			// https://github.com/deweyjose/graphqlcodegen/releases

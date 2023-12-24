@@ -1,18 +1,20 @@
-package io.spring.start.site.extension.dependency.taotaocloud.web;
+package io.spring.start.site.extension.dependency.taotaocloud.dingtalk;
 
 import io.spring.start.site.extension.dependency.taotaocloud.configuration.application.ApplicationConfigurationYmlFile;
+import io.spring.start.site.extension.dependency.taotaocloud.configuration.application.ApplicationYmlFileCustomizer;
 import io.spring.start.site.extension.dependency.taotaocloud.configuration.application.ApplicationYmlServiceContainer;
 import io.spring.start.site.extension.dependency.taotaocloud.configuration.application.dev.ApplicationDevYmlFileCustomizer;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class WebApplicationDevYmlFileCustomizer implements ApplicationDevYmlFileCustomizer {
+public class DingTalkApplicationDevYmlFileCustomizer implements ApplicationDevYmlFileCustomizer {
+
     @Override
     public void customize(ApplicationConfigurationYmlFile applicationYmlFile) {
         ApplicationYmlServiceContainer applicationYmlServiceContainer = applicationYmlFile.getApplicationYmlServiceContainer();
         List<String> data = new LinkedList<>();
-        data.add("    web:");
+        data.add("    ding-talk:");
         data.add("      request:");
         data.add("        enabled: true");
         data.add("        types:");
@@ -20,11 +22,11 @@ public class WebApplicationDevYmlFileCustomizer implements ApplicationDevYmlFile
         data.add("          - logger");
         data.add("          - kafka");
 
-        applicationYmlServiceContainer.getServices().put("web-dev", data);
+        applicationYmlServiceContainer.getServices().put("dingtalk", data);
     }
 
     @Override
     public int getOrder() {
-        return 1;
+        return 3;
     }
 }
