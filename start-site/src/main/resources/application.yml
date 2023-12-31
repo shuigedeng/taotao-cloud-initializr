@@ -671,11 +671,11 @@ initializr:
           links:
             - rel: reference
               href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
-        - name: TaoTaoCloud Starter Disruptor
-          id: taotao-cloud-starter-disruptor
+        - name: TaoTaoCloud Starter EventBus
+          id: taotao-cloud-starter-eventbus
           groupId: io.github.shuigedeng
-          artifactId: taotao-cloud-starter-disruptor
-          description: taotao cloud disruptor
+          artifactId: taotao-cloud-starter-eventbus
+          description: taotao cloud eventbus
           bom: taotao-cloud
           links:
             - rel: reference
