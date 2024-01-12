@@ -208,27 +208,6 @@ initializr:
           links:
             - rel: reference
               href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
-    - name: TaoTaoCloud Alibaba Starter
-      content:
-        - name: TaoTaoCloud Starter Alibaba Seata
-          id: taotao-cloud-starter-alibaba-seata
-          groupId: io.github.shuigedeng
-          artifactId: taotao-cloud-starter-alibaba-seata
-          description: taotao cloud alibaba seata
-          starter: true
-          bom: taotao-cloud
-          links:
-            - rel: reference
-              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
-        - name: TaoTaoCloud Starter Alibaba Sentinel
-          id: taotao-cloud-starter-alibaba-sentinel
-          groupId: io.github.shuigedeng
-          artifactId: taotao-cloud-starter-alibaba-sentinel
-          description: taotao cloud alibaba sentinel
-          bom: taotao-cloud
-          links:
-            - rel: reference
-              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
     - name: TaoTaoCloud Data Starter
       content:
         - name: TaoTaoCloud Starter Data Elasticsearch
@@ -424,36 +403,6 @@ initializr:
           groupId: io.github.shuigedeng
           artifactId: taotao-cloud-starter-mq-mqtt
           description: taotao cloud mq mqtt
-          bom: taotao-cloud
-          links:
-            - rel: reference
-              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
-    - name: TaoTaoCloud Tracing Starter
-      content:
-        - name: TaoTaoCloud Starter Tracing Jaeger
-          id: taotao-cloud-starter-tracing-jaeger
-          groupId: io.github.shuigedeng
-          artifactId: taotao-cloud-starter-tracing-jaeger
-          description: taotao cloud tracing jaeger
-          starter: true
-          bom: taotao-cloud
-          links:
-            - rel: reference
-              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
-        - name: TaoTaoCloud Starter Tracing Skywalking
-          id: taotao-cloud-starter-tracing-skywalking
-          groupId: io.github.shuigedeng
-          artifactId: taotao-cloud-starter-tracing-skywalking
-          description: taotao cloud tracing skywalking
-          bom: taotao-cloud
-          links:
-            - rel: reference
-              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
-        - name: TaoTaoCloud Starter Tracing Micrometer
-          id: taotao-cloud-starter-tracing-micrometer
-          groupId: io.github.shuigedeng
-          artifactId: taotao-cloud-starter-tracing-micrometer
-          description: taotao cloud tracing micrometer
           bom: taotao-cloud
           links:
             - rel: reference
@@ -775,6 +724,43 @@ initializr:
           groupId: io.github.shuigedeng
           artifactId: taotao-cloud-starter-office
           description: taotao cloud office
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Seata
+          id: taotao-cloud-starter-seata
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-seata
+          description: taotao cloud alibaba seata
+          starter: true
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Sentinel
+          id: taotao-cloud-starter-sentinel
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-sentinel
+          description: taotao cloud sentinel
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Skywalking
+          id: taotao-cloud-starter-skywalking
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-skywalking
+          description: taotao cloud skywalking
+          bom: taotao-cloud
+          links:
+            - rel: reference
+              href: https://codecentric.github.io/spring-boot-admin/current/#getting-started
+        - name: TaoTaoCloud Starter Micrometer
+          id: taotao-cloud-starter-micrometer
+          groupId: io.github.shuigedeng
+          artifactId: taotao-cloud-starter-micrometer
+          description: taotao cloud micrometer
           bom: taotao-cloud
           links:
             - rel: reference
