@@ -41,12 +41,12 @@ public class TaoTaoCloudProjectGenerationConfiguration {
 //    }
 //    // 添加基础yml
 //    @Bean
-//    public TaoTaoCloudApplicationYmlFileCustomizer taoTaoCloudApplicationYmlFileCustomizer() {
-//        return new TaoTaoCloudApplicationYmlFileCustomizer();
+//    public TaoTaoBootApplicationYmlFileCustomizer TaoTaoBootApplicationYmlFileCustomizer() {
+//        return new TaoTaoBootApplicationYmlFileCustomizer();
 //    }
 //    @Bean
-//    public TaoTaoCloudApplicationDevYmlFileCustomizer taoTaoCloudApplicationDevYmlFileCustomizer() {
-//        return new TaoTaoCloudApplicationDevYmlFileCustomizer();
+//    public TaoTaoBootApplicationDevYmlFileCustomizer TaoTaoBootApplicationDevYmlFileCustomizer() {
+//        return new TaoTaoBootApplicationDevYmlFileCustomizer();
 //    }
 //    @Bean
 //    public TaoTaoCloudBootstrapEnvYmlFileCustomizers.TaoTaoCloudBootstrapDevYmlFileCustomizer taoTaoCloudBootstrapDevYmlFileCustomizer(){

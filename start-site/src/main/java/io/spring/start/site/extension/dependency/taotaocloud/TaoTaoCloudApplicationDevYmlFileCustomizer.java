@@ -5,7 +5,7 @@ import io.spring.start.site.extension.dependency.taotaocloud.configuration.appli
 import io.spring.start.site.extension.dependency.taotaocloud.common.utils.YmlDataUtils;
 
 
-public class TaoTaoCloudApplicationDevYmlFileCustomizer implements ApplicationDevYmlFileCustomizer {
+public class TaoTaoBootApplicationDevYmlFileCustomizer implements ApplicationDevYmlFileCustomizer {
 
     @Override
     public void customize(ApplicationConfigurationYmlFile applicationYmlFile) {
