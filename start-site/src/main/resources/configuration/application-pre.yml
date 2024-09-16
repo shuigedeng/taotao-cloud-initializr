@@ -482,7 +482,7 @@ herodotus:
         certificate: standard
 
 taotao:
-  cloud:
+  boot:
     sensitive:
       enabled: true
     lock:
