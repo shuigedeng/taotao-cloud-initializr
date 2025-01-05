@@ -336,7 +336,6 @@ taotao-cloud-project -- 父项目
 +--- Project ':taotao-cloud-starter-idgenerator'
 +--- Project ':taotao-cloud-starter-ip2region'
 +--- Project ':taotao-cloud-starter-job'
-+--- Project ':taotao-cloud-starter-laytpl'
 +--- Project ':taotao-cloud-starter-limit'
 +--- Project ':taotao-cloud-starter-lock'
 +--- Project ':taotao-cloud-starter-logger'
