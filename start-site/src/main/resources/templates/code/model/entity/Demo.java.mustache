@@ -76,8 +76,8 @@ public class {{uppercaseArtifactId}} extends BaseSuperEntity<{{uppercaseArtifact
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {
             return false;
         }
-        {{uppercaseArtifactId}} dept = ({{uppercaseArtifactId}}) o;
-        return getId() != null && Objects.equals(getId(), dept.getId());
+        {{uppercaseArtifactId}} deptPO = ({{uppercaseArtifactId}}) o;
+        return getId() != null && Objects.equals(getId(), deptPO.getId());
     }
 
     @Override
