@@ -281,9 +281,7 @@ mybatis-plus:
   configuration-properties:
     CONSTANT_CIPHER_TEXT: taotao-cloud
 
-feign:
-  sentinel:
-    enabled: true
+
 
 management:
   info:
@@ -634,10 +632,7 @@ taotao:
         enabled: true
       warn:
         enabled: true
-    feign:
-      enabled: true
-      loadbalancer:
-        enabled: true
+
     encrypt:
       enabled: false
       filter:
